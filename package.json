@@ -1,0 +1,20 @@
+{
+	"private": "true",
+	"scripts": {
+		"start": "run-p start:*",
+		"start:eleventy": "eleventy --serve",
+		"start:postcss": "postcss styles/site.css --o _tmp/site.css --watch",
+		"build": "run-s build:postcss build:eleventy",
+		"build:eleventy": "cross-env ELEVENTY_PRODUCTION=true eleventy",
+		"build:postcss": "cross-env NODE_ENV=production postcss styles/site.css --o _site/site.css",
+		"clean": "rimraf _site _tmp"
+	},
+	"devDependencies": {
+		"@11ty/eleventy": "^0.11.0",
+		"cross-env": "^7.0.2",
+		"npm-run-all": "^4.1.5",
+		"postcss-cli": "^7.1.1",
+		"rimraf": "^3.0.2",
+		"tailwindcss": "^1.5.2"
+	}
+}
