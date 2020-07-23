@@ -1,3 +1,32 @@
 @tailwind base;
+
+:root {
+	--color-main: theme("colors.gray.100");
+	--color-index: theme("colors.gray.200");
+	--color-primary: #dc3545;
+	--color-secondary: theme("colors.gray.700");
+
+	--opacity-light: 1;
+	--opacity-dark: 0;
+}
+
+:root[data-theme="dark"] {
+	--color-main: theme("colors.gray.900");
+	--color-index: theme("colors.gray.800");
+	--color-primary: #dc3545;
+	--color-secondary: theme("colors.gray.400");
+
+	--opacity-light: 0;
+	--opacity-dark: 1;
+}
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+	transition: background-color 750ms, color 750ms, opacity 750ms !important;
+	transition-delay: 0 !important;
+}
+
 @tailwind components;
 @tailwind utilities;

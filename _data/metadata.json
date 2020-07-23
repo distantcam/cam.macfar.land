@@ -1,0 +1,15 @@
+{
+	"title": "Cam's Blog",
+	"url": "https://cam.macfar.land/",
+	"navigation": {
+		"Home": "/",
+		"About": "/about",
+		"Feed": "/feed.rss"
+	},
+	"social": {
+		"twitter": "https://twitter.com/distantcam",
+		"github": "https://github.com/distantcam",
+		"instagram": "https://instagram.com/distantcam",
+		"stackoverflow": "https://stackoverflow.com/users/3820"
+	}
+}

@@ -3,11 +3,77 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{{ title }}</title>
+	<title>{{ title or metadata.title }}</title>
 
 	<link rel="stylesheet" href="site.css" />
 </head>
-<body>
+
+<body class="font-sans font-light leading-normal tracking-normal text-secondary bg-main">
+
+	<nav class="flex flex-no-wrap justify-between py-3 mx-auto lg:max-w-4xl xl:max-w-6xl">
+
+		<a class="flex-1 px-3 text-lg font-bold sm:px-6 inverted" href="{{ metadata.url }}">{{ metadata.title }}</a>
+
+		<ul class="flex items-center justify-end flex-1 sm:justify-center">
+			
+			{% for name, link in metadata.navigation %}
+			<li class="px-3 sm:px-6"><a class="uppercase inverted" href="{{ link | url }}">{{ name }}</a></li>
+			{% endfor %}
+
+			<li class="px-3 sm:px-6"><a id="toggle" class="text-secondary hover:text-secondary" href="#">
+				<svg id="moon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+				<svg id="sun" class="hidden w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" /></svg>
+			</a></li>
+
+		</ul>
+
+		<ul class="items-center justify-end flex-1 hidden sm:flex">
+			{% for name, link in metadata.social %}
+			<li class="px-3 md:px-6"><a class="inverted" href="{{ link }}" aria-label="{{ name }}">
+				{% simpleicon name %}
+			</a></li>
+			{% endfor %}
+		</ul>
+
+	</nav>
+
+
 	{{ content | safe }}
 </body>
+
+<script>
+		window.addEventListener('DOMContentLoaded', function(event) {
+			const currentMode = localStorage.getItem('currentTheme') || 'light';
+			updateTheme(currentMode);
+		});
+
+		document.getElementById('toggle').addEventListener('click', function(event) {
+			event.preventDefault();
+			const currentMode = localStorage.getItem('currentTheme') || 'light';
+			const newMode = currentMode === 'light' ? 'dark' : 'light';
+
+			localStorage.setItem('currentTheme', newMode);
+
+			document.documentElement.classList.add('transition');
+			setTimeout(() => {
+				document.documentElement.classList.remove('transition')
+			}, 1000);
+
+			updateTheme(newMode);
+		});
+
+		function updateTheme(newMode) {
+			document.documentElement.setAttribute('data-theme', newMode);
+			const moon = document.getElementById('moon');
+			const sun = document.getElementById('sun');
+			if (newMode === 'light') {
+				sun.classList.add('hidden');
+				moon.classList.remove('hidden');
+			} else {
+				sun.classList.remove('hidden');
+				moon.classList.add('hidden');
+			}
+		};
+	</script>
+
 </html>
