@@ -29,7 +29,7 @@
 
 		<ul class="items-center justify-end flex-1 hidden sm:flex">
 			{% for name, link in metadata.social %}
-			<li class="px-3 md:px-6"><a class="inverted" href="{{ link }}" aria-label="{{ name }}">
+			<li class="px-3 md:px-6"><a class="inverted" href="{{ link }}" aria-label="{{ name }}" rel="noopener noreferrer" target="_blank">
 				{% simpleicon name %}
 			</a></li>
 			{% endfor %}
@@ -37,43 +37,36 @@
 
 	</nav>
 
-
 	{{ content | safe }}
-</body>
 
-<script>
-		window.addEventListener('DOMContentLoaded', function(event) {
-			const currentMode = localStorage.getItem('currentTheme') || 'light';
-			updateTheme(currentMode);
-		});
+	<footer class="text-center">
 
-		document.getElementById('toggle').addEventListener('click', function(event) {
-			event.preventDefault();
-			const currentMode = localStorage.getItem('currentTheme') || 'light';
-			const newMode = currentMode === 'light' ? 'dark' : 'light';
+		<ul class="flex justify-center my-10">
+			{% for name, link in metadata.social %}
+			<li class="px-5 sm:px-10"><a href="{{ link }}" aria-label="{{ name }}">
+				{% simpleicon name %}
+			</a></li>
+			{% endfor %}
+		</ul>
 
-			localStorage.setItem('currentTheme', newMode);
+		<section class="my-10">{{ metadata.author }} &copy; {% currentyear %}</section>
 
-			document.documentElement.classList.add('transition');
-			setTimeout(() => {
-				document.documentElement.classList.remove('transition')
-			}, 1000);
+		<a id="back-top" class="pb-10 my-10 uppercase" href="#">Back to Top</a>
 
-			updateTheme(newMode);
-		});
+	</footer>
 
-		function updateTheme(newMode) {
-			document.documentElement.setAttribute('data-theme', newMode);
-			const moon = document.getElementById('moon');
-			const sun = document.getElementById('sun');
-			if (newMode === 'light') {
-				sun.classList.add('hidden');
-				moon.classList.remove('hidden');
-			} else {
-				sun.classList.remove('hidden');
-				moon.classList.add('hidden');
-			}
-		};
+	<script src="themetoggle.js" />
+	<script src="topscroll.js" />
+
+	<script>
+		// Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js');
+      });
+    }
 	</script>
 
+</bod>
 </html>

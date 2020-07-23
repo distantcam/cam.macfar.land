@@ -1,6 +1,8 @@
 {
 	"title": "Cam's Blog",
 	"url": "https://cam.macfar.land/",
+	"description": "I'm a software engineer, occasional writer, open source contributer and all round nerd from Perth, Australia",
+	"author": "Cameron MacFarland",
 	"navigation": {
 		"Home": "/",
 		"About": "/about",

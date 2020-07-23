@@ -4,8 +4,10 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.setUseGitIgnore(false);
 
 	eleventyConfig.addPassthroughCopy({ "_tmp/*.css": "." });
+	eleventyConfig.addPassthroughCopy({ static: "." });
 
 	eleventyConfig.addShortcode("simpleicon", simpleIcon);
+	eleventyConfig.addShortcode("currentyear", () => new Date().getFullYear().toString());
 };
 
 function simpleIcon(id) {
@@ -15,7 +17,7 @@ function simpleIcon(id) {
 		return `<p>SimpleIcon ID not found: '${id}'</p>`;
 	}
 
-	return `<div class="icon">
+	return `<div class="icon h-6">
 	<svg width="24" height="24" data-icon="${id}" viewbox="0 0 24 24">
 		<path fill="currentColor" d="${data.path}" />
 	</svg>
