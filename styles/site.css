@@ -29,4 +29,30 @@ html.transition *:after {
 }
 
 @tailwind components;
+
+a {
+  @apply text-primary;
+}
+
+a:hover {
+  @apply text-secondary;
+}
+
+a.inverted {
+  @apply text-secondary; 
+}
+
+a.inverted:focus,
+a.inverted:hover {
+  @apply text-primary;
+}
+
 @tailwind utilities;
+
+.theme-light {
+	opacity: var(--opacity-light);
+}
+
+.theme-dark {
+	opacity: var(--opacity-dark);
+}

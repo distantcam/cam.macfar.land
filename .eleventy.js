@@ -3,6 +3,8 @@ const simpleIcons = require("simple-icons");
 module.exports = function (eleventyConfig) {
 	eleventyConfig.setUseGitIgnore(false);
 
+	eleventyConfig.setDataDeepMerge(true);
+
 	eleventyConfig.addPassthroughCopy({ "_tmp/*.css": "." });
 	eleventyConfig.addPassthroughCopy({ static: "." });
 
