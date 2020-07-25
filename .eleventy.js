@@ -25,7 +25,9 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addFilter("readableDate", (dateObj) => DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy"));
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter('htmlDate', (dateObj) => DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd'));
+	eleventyConfig.addFilter("htmlDate", (dateObj) => DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd'));
+	
+	eleventyConfig.addFilter("page", page);
 };
 
 function simpleIcon(id) {
@@ -99,4 +101,17 @@ function simpleicon(liquidEngine) {
 			return Promise.resolve(`<p>${str}</p>`);
 		}
 	};
+}
+
+function page(array, n, p) {
+	var from = n * p * -1;
+	var to = n * (p - 1) * -1;
+	let page;
+	if (to == 0) {
+		page = array.slice(from);
+	} else {
+		page = array.slice(from, to);
+	}
+	page.reverse();
+	return page;
 }

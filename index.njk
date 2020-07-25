@@ -17,10 +17,9 @@ layout: default
 
 <main class="bg-index">
 	<div class="pt-6 xl:pt-12 md:max-w-6xl md:mx-auto md:flex md:flex-wrap">
-	{% for post in collections.posts %}
+	{% for post in collections.posts | page(10, 1) %}
 		{% include "partial/post-card.njk" %}
 	{% endfor %}
-		{# <%- include('_partial/post-card', { post }) %> #}
 	</div>
   
   {# <section class="p-5 text-center">
