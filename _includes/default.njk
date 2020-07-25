@@ -1,72 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{{ title or metadata.title }}</title>
+
+{% include "partial/head.njk" %}
+
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Fira+Mono">
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
 	<link rel="stylesheet" href="site.css" />
 </head>
 
 <body class="font-sans font-light leading-normal tracking-normal text-secondary bg-main">
 
-	<nav class="flex flex-no-wrap justify-between py-3 mx-auto lg:max-w-4xl xl:max-w-6xl">
-
-		<a class="flex-1 px-3 text-lg font-bold sm:px-6 inverted" href="{{ metadata.url }}">{{ metadata.title }}</a>
-
-		<ul class="flex items-center justify-end flex-1 sm:justify-center">
-			
-			{% for name, link in metadata.navigation %}
-			<li class="px-3 sm:px-6"><a class="uppercase inverted" href="{{ link | url }}">{{ name }}</a></li>
-			{% endfor %}
-
-			<li class="px-3 sm:px-6"><a id="toggle" class="text-secondary hover:text-secondary" href="#">
-				<svg id="moon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
-				<svg id="sun" class="hidden w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" /></svg>
-			</a></li>
-
-		</ul>
-
-		<ul class="items-center justify-end flex-1 hidden sm:flex">
-			{% for name, link in metadata.social %}
-			<li class="px-3 md:px-6"><a class="inverted" href="{{ link }}" aria-label="{{ name }}" rel="noopener noreferrer" target="_blank">
-				{% simpleicon name %}
-			</a></li>
-			{% endfor %}
-		</ul>
-
-	</nav>
+{% include "partial/navbar.njk" %}
 
 	{{ content | safe }}
 
-	<footer class="text-center">
+{% include "partial/footer.njk" %}
 
-		<ul class="flex justify-center my-10">
-			{% for name, link in metadata.social %}
-			<li class="px-5 sm:px-10"><a href="{{ link }}" aria-label="{{ name }}">
-				{% simpleicon name %}
-			</a></li>
-			{% endfor %}
-		</ul>
+	<script src="themetoggle.js"></script>
+	<script src="topscroll.js"></script>
 
-		<section class="my-10">{{ metadata.author }} &copy; {% currentyear %}</section>
-
-		<a id="back-top" class="pb-10 my-10 uppercase" href="#">Back to Top</a>
-
-	</footer>
-
-	<script src="themetoggle.js" />
-	<script src="topscroll.js" />
-
-	<script>
-		// Check that service workers are supported
-    if ('serviceWorker' in navigator) {
-      // Use the window load event to keep the page load performant
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js');
-      });
-    }
-	</script>
-
-</bod>
+</body>
 </html>
