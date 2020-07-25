@@ -31,20 +31,34 @@ html.transition *:after {
 @tailwind components;
 
 a {
-  @apply text-primary;
+	@apply text-primary;
 }
 
 a:hover {
-  @apply text-secondary;
+	@apply text-secondary;
 }
 
 a.inverted {
-  @apply text-secondary; 
+	@apply text-secondary; 
 }
 
 a.inverted:focus,
 a.inverted:hover {
-  @apply text-primary;
+	@apply text-primary;
+}
+
+@media (min-width: 768px) {
+	.post-card:nth-of-type(6n+1) {
+		width: 100%;
+		flex-direction: row;
+	
+		& .post-card__image {
+			min-height: 20rem;
+			position: relative;
+			flex: 2 2 auto;
+			width: auto;
+		}
+	}
 }
 
 @tailwind utilities;
@@ -55,4 +69,17 @@ a.inverted:hover {
 
 .theme-dark {
 	opacity: var(--opacity-dark);
+}
+
+.header-shadow {
+	text-shadow:
+	2px 2px 10px var(--color-main),
+	-2px 2px 10px var(--color-main),
+	2px -2px 10px var(--color-main),
+	-2px -2px 10px var(--color-main),
+
+	4px 4px 10px var(--color-main),
+	-4px 4px 10px var(--color-main),
+	4px -4px 10px var(--color-main),
+	-4px -4px 10px var(--color-main);
 }

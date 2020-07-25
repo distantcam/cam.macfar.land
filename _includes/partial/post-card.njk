@@ -1,0 +1,51 @@
+<article class="flex flex-col mx-5 mb-5 overflow-hidden rounded post-card bg-main md:flex-grow md:flex-shrink md:w-64 xl:mb-10" id="{{ post.slug }}">
+
+	<a class="relative w-full h-48 post-card__image" href="{{ post.url | url }}" aria-hidden="true">
+		{% if post.data.unsplash_id %}
+		{% if post.data.unsplash.error %}
+			<p class="flex items-center justify-center w-full h-full text-4xl">{{ post.data.unsplash.error }}</p>
+		{% else %}
+			<img class="absolute inset-0 block object-cover w-full h-full lazyload"
+				data-src="{{ post.data.unsplash.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max"
+				data-sizes="{% for size in [30, 100, 300, 600, 1000, 2000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+				data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000, 2000] %}{{ comma() }}{{ post.data.unsplash.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w={{ size }}&fit=max {{ size }}w{% endfor %}"
+				src="{{ post.data.unsplash.base64 }}"
+				alt="{{ post.data.unsplash.alt_description }}"
+				style="background-color:{{ post.data.unsplash.color }}"
+				/>
+		{% endif %}
+		{% else %}
+			<img class="absolute inset-0 block object-cover w-full h-full lazyload theme-light"
+				data-src="{{ unsplash.default.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max"
+				data-sizes="{% for size in [30, 100, 300, 600, 1000, 2000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+				data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000, 2000] %}{{ comma() }}{{ unsplash.default.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w={{ size }}&fit=max {{ size }}w{% endfor %}"
+				src="{{ unsplash.default.base64 }}"
+				alt="{{ unsplash.default.alt_description }}"
+				style="background-color:{{ unsplash.default.color }}"
+				/>
+			<img class="absolute inset-0 block object-cover w-full h-full lazyload theme-dark"
+				data-src="{{ unsplash.default_dark.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max"
+				data-sizes="{% for size in [30, 100, 300, 600, 1000, 2000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+				data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000, 2000] %}{{ comma() }}{{ unsplash.default_dark.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w={{ size }}&fit=max {{ size }}w{% endfor %}"
+				src="{{ unsplash.default_dark.base64 }}"
+				alt="{{ unsplash.default_dark.alt_description }}"
+				style="background-color:{{ unsplash.default_dark.color }}"
+				/>
+		{% endif %}
+	</a>
+
+	<section class="flex flex-col flex-1 px-4 py-3 post-card__content">
+		<header class="flex-initial">
+			<a href="{{ post.url | url }}"><h2 class="text-xl">{{ post.data.title }}</h2></a>
+		</header>
+
+		<section class="flex-auto">
+			{% excerpt post %}
+		</section>
+
+		<footer class="justify-end flex-initial">
+			<a class="inverted" href="{{ post.url | url }}"><time class="text-sm" datetime="{{ post.date | htmlDate }}"><i class="text-sm material-icons">calendar_today</i> {{ post.date | readableDate }}</time></a>
+		</footer>
+	</section>
+
+</article>
