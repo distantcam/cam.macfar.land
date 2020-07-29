@@ -8,7 +8,7 @@ module.exports = {
 	layout: "post",
 	"tags": ["posts"],
   eleventyComputed: {
-    unsplash: async (data) => await getPhotoData(createUnsplashClient(), data.unsplash_id),
+    post_unsplash: async (data) => await getPhotoData(createUnsplashClient(), data.unsplash_id),
   },
 };
 

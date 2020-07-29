@@ -2,16 +2,16 @@
 
 	<a class="relative w-full h-48 post-card__image" href="{{ post.url | url }}" aria-hidden="true">
 		{% if post.data.unsplash_id %}
-		{% if post.data.unsplash.error %}
-			<p class="flex items-center justify-center w-full h-full text-4xl">{{ post.data.unsplash.error }}</p>
+		{% if post.data.post_unsplash.error %}
+			<p class="flex items-center justify-center w-full h-full text-4xl">{{ post.data.post_unsplash.error }}</p>
 		{% else %}
 			<img class="absolute inset-0 block object-cover w-full h-full lazyload"
-				data-src="{{ post.data.unsplash.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max"
+				data-src="{{ post.data.post_unsplash.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max"
 				data-sizes="{% for size in [30, 100, 300, 600, 1000, 2000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
-				data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000, 2000] %}{{ comma() }}{{ post.data.unsplash.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w={{ size }}&fit=max {{ size }}w{% endfor %}"
-				src="{{ post.data.unsplash.base64 }}"
-				alt="{{ post.data.unsplash.alt_description }}"
-				style="background-color:{{ post.data.unsplash.color }}"
+				data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000, 2000] %}{{ comma() }}{{ post.data.post_unsplash.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w={{ size }}&fit=max {{ size }}w{% endfor %}"
+				src="{{ post.data.post_unsplash.base64 }}"
+				alt="{{ post.data.post_unsplash.alt_description }}"
+				style="background-color:{{ post.data.post_unsplash.color }}"
 				/>
 		{% endif %}
 		{% else %}

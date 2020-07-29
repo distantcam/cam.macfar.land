@@ -3,14 +3,16 @@
 	"scripts": {
 		"start": "run-p start:*",
 		"start:eleventy": "eleventy --serve",
-		"start:postcss": "postcss styles/site.css --o _tmp/site.css --watch",
+		"start:postcss": "postcss styles/*.css --dir _tmp --watch",
 		"build": "run-s build:postcss build:eleventy",
 		"build:eleventy": "cross-env ELEVENTY_PRODUCTION=true eleventy",
-		"build:postcss": "cross-env NODE_ENV=production postcss styles/site.css --o _site/site.css",
+		"build:postcss": "cross-env NODE_ENV=production postcss styles/*.css --o _site/",
 		"clean": "rimraf _site _tmp"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^0.11.0",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
+		"@tailwindcss/typography": "^0.2.0",
 		"cheerio": "^1.0.0-rc.3",
 		"cross-env": "^7.0.2",
 		"dotenv": "^8.2.0",

@@ -3,6 +3,43 @@ module.exports = {
 		content: ["_site/**/*.html"],
 	},
 	theme: {
+		typography: (theme) => ({
+			default: {
+				css: [{
+					color: "var(--color-secondary)",
+					'[class~="lead"]': {
+						color: "var(--color-secondary)",
+					},
+					a: {
+						color: "var(--color-primary)",
+					},
+					strong: {
+						color: "var(--color-secondary)",
+					},
+					h1: {
+						color: "var(--color-secondary)",
+					},
+					h2: {
+						color: "var(--color-secondary)",
+					},
+					h3: {
+						color: "var(--color-secondary)",
+					},
+					h4: {
+						color: "var(--color-secondary)",
+					},
+					h5: {
+						color: "var(--color-secondary)",
+					},
+					h6: {
+						color: "var(--color-secondary)",
+					},
+					code: {
+						color: "var(--color-secondary)",
+					},
+				}]
+			}
+		}),
 		extend: {
 			colors: {
 				primary: "var(--color-primary)",
@@ -20,5 +57,5 @@ module.exports = {
 		},
 	},
 	variants: {},
-	plugins: [],
+	plugins: [require("@tailwindcss/typography")],
 };

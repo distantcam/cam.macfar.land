@@ -2,4 +2,26 @@
 layout: default
 ---
 
-{{ content | safe }}
+<header class="pt-5 mx-auto text-center lg:pt-24 lg:-mb-24 lg:max-w-4xl xl:max-w-6xl">
+
+	<time datetime="{{ date | htmlDate }}"><i class="text-sm material-icons">calendar_today</i> {{ date | readableDate }}</time>
+
+	<h1 class="pb-5 text-5xl leading-tight">{{ title }}</h1>
+
+	{# <%- include('_partial/categories', { page }) %> #}
+	{# <%- include('_partial/tags', { page }) %> #}
+
+	{% include "partial/page-head.njk" %}
+	
+</header>
+
+<main class="relative px-10 pt-10 mx-auto bg-main lg:min-h-24 lg:max-w-3xl xl:max-w-5xl">
+	{% if unsplash_id %}
+	<p class="absolute top-0 right-0 px-5 py-3 text-sm">Photo by <a href="https://unsplash.com/@{{ post_unsplash.user.username }}?utm_source={{ metadata.unsplash.utm_source }}&utm_medium=referral">{{ post_unsplash.user.name }}</a> on <a href="https://unsplash.com/?utm_source={{ metadata.unsplash.utm_source }}&utm_medium=referral">Unsplash</a></p>
+	{% endif %}
+
+	<div class="m-auto prose-sm prose sm:prose md:prose-lg xl:prose-xl">
+	{{ content | safe }}
+	</div>
+
+</main>
