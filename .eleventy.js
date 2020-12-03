@@ -19,12 +19,14 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addShortcode("currentyear", () => new Date().getFullYear().toString());
 	eleventyConfig.addShortcode("excerpt", extractExcerpt);
-	eleventyConfig.addShortcode("simpleicon", dummy);
-	eleventyConfig.addShortcode("codepen", dummy);
 
-	eleventyConfig.addLiquidTag("unsplash", unsplashTag);
-	eleventyConfig.addLiquidTag("post_link", postlinkTag);
-	// eleventyConfig.addLiquidTag("simpleicon", lqsimpleicon);
+	eleventyConfig.addShortcode("unsplash", dummy);
+
+	eleventyConfig.addNunjucksShortcode("simpleicon", simpleIcon);
+
+	eleventyConfig.addLiquidTag("simpleicon", simpleIconLQ);
+	eleventyConfig.addLiquidTag("post_link", postLink);
+	eleventyConfig.addLiquidTag("codepen", codePen);
 
 	eleventyConfig.addFilter("readableDate", (dateObj) => DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy"));
 
@@ -35,35 +37,80 @@ module.exports = function (eleventyConfig) {
 };
 
 function dummy() {
-	return "<p>Dummy</p>"
+	return "<span>[Dummy]</span>"
 }
 
 function simpleIcon(id) {
-	return `<p>${id}</p>`;
+	const data = simpleIcons.get(id);
 
-// 	const data = simpleIcons.get(id);
+	if (!data) {
+		return `<p>SimpleIcon ID not found: '${id}'</p>`;
+	}
 
-// 	if (!data) {
-// 		return `<p>SimpleIcon ID not found: '${id}'</p>`;
-// 	}
-
-// 	return `<div class="icon h-6">
-// 	<svg width="24" height="24" data-icon="${id}" viewbox="0 0 24 24">
-// 		<path fill="currentColor" d="${data.path}" />
-// 	</svg>
-// </div>`;
+	return `<svg width="24" height="24" data-icon="${id}" viewbox="0 0 24 24"><path fill="currentColor" d="${data.path}" /></svg>`;
 }
 
-function createUnsplashClient() {
-	return new Unsplash({
-		accessKey: process.env.UNSPLASH_APP_ID,
-		secret: process.env.UNSPLASH_SECRET
-	});
+function simpleIconLQ(liquidEngine) {
+	return {
+		parse: function(tagToken, remainTokens) {
+			this.args = tagToken.args;
+		},
+		render: function(scope, hash) {
+			let isQuoted = this.args.charAt(0) === "'" || this.args.charAt(0) === '"';
+			let id = isQuoted ? liquidEngine.evalValue(this.args, scope) : this.args;
+
+			return Promise.resolve(`<div class="icon">${simpleIcon(id)}</div>`);
+		}
+	};
 }
 
-async function getPhotoJson(unsplash, id) {
-	return await unsplash.photos.getPhoto(id).then(toJson);
+function postLink(liquidEngine) {
+	return {
+		parse: function(tagToken, remainTokens) {
+			this.args = tagToken.args;
+		},
+		render: function(scope, hash) {
+			let isQuoted = this.args.charAt(0) === "'" || this.args.charAt(0) === '"';
+			let path = isQuoted ? liquidEngine.evalValue(this.args, scope) : this.args;
+
+			let results = scope.contexts[0].collections.posts.filter(function(tmpl) {
+				return tmpl.fileSlug.endsWith(path);
+			});
+			if (!results.length) {
+				return Promise.resolve(`<p>Slug ${path} not found</p>`);
+			}
+			return Promise.resolve(`<a href="${results[0].url}" title="${results[0].data.title}">${results[0].data.title}</a>`);
+		}
+	};
 }
+
+function codePen(liquidEngine) {
+	return {
+		parse: function(tagToken, remainTokens) {
+			this.args = tagToken.args;
+		},
+		render: function(scope, hash) {
+			let isQuoted = this.args.charAt(0) === "'" || this.args.charAt(0) === '"';
+			let args = isQuoted ? liquidEngine.evalValue(this.args, scope).split(',') : this.args.split(',');
+
+			var user = args[0].trim();
+			var token = args[1].trim();
+
+			return Promise.resolve(`<p class="codepen" data-user="${user}" data-slug-hash="${token}" data-default-tab="}&lt;&#x2F;p&gt;" data-theme-id="dark" data-height="512" style="height: 512px"><span>See the <a href="https://codepen.io/${user}/pen/${token}" target="_blank" rel="noopener">CodePen</a></span></p>`);
+		}
+	};
+}
+
+// function createUnsplashClient() {
+// 	return new Unsplash({
+// 		accessKey: process.env.UNSPLASH_APP_ID,
+// 		secret: process.env.UNSPLASH_SECRET
+// 	});
+// }
+
+// async function getPhotoJson(unsplash, id) {
+// 	return await unsplash.photos.getPhoto(id).then(toJson);
+// }
 
 function extractExcerpt(article) {
 	if (!article.hasOwnProperty("templateContent")) {
@@ -77,29 +124,22 @@ function extractExcerpt(article) {
 	return $("p.lead").text();
 }
 
-function unsplashTag(liquidEngine) {
-	return {
-		parse: function(tagToken, remainingTokens) {
-			this.str = tagToken.args;
-		},
-		render: function(scope, hash) {
-			const str = liquidEngine.evalValue(this.str, scope);
-			return Promise.resolve(`<p>${str}</p>`);
-		}
-	};
-}
+// function unsplash(id)
+// {
+// 	return `<p>Unsplash ${id}</p>`
+// }
 
-function postlinkTag(liquidEngine) {
-	return {
-		parse: function(tagToken, remainingTokens) {
-			this.str = tagToken.args;
-		},
-		render: function(scope, hash) {
-			const str = liquidEngine.evalValue(this.str, scope);
-			return Promise.resolve(`<p>${str}</p>`);
-		}
-	};
-}
+// function unsplashTag(liquidEngine) {
+// 	return {
+// 		parse: function(tagToken, remainingTokens) {
+// 			this.str = tagToken.args;
+// 		},
+// 		render: function(scope, hash) {
+// 			const str = liquidEngine.evalValue(this.str, scope);
+// 			return Promise.resolve(`<p>Unsplash: ${str}</p>`);
+// 		}
+// 	};
+// }
 
 function page(array, n, p) {
 	var from = n * p * -1;

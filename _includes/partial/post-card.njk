@@ -34,18 +34,16 @@
 		{% endif %}
 	</a>
 
-	<section class="flex flex-col flex-1 px-4 py-3 post-card__content">
+	<a class="flex flex-col flex-1 px-4 py-3 inverted post-card__content" href="{{ post.url | url }}">
 		<header class="flex-initial">
-			<a href="{{ post.url | url }}"><h2 class="text-xl">{{ post.data.title }}</h2></a>
+			<p class="text-xs font-medium uppercase text-primary">{{ post.data.tags[1] }}</p>
+			<h2 class="text-xl font-bold">{{ post.data.title }}</h2>
+			<time class="text-sm text-secondary" datetime="{{ post.date | htmlDate }}"><i class="text-sm material-icons">calendar_today</i> {{ post.date | readableDate }}</time>
 		</header>
-
-		<section class="flex-auto">
-			{% excerpt post %}
+		
+		<section class="flex-auto mt-6 mb-3">
+			<span class="inline-block align-middle">{% excerpt post %}</span>
 		</section>
-
-		<footer class="justify-end flex-initial">
-			<a class="inverted" href="{{ post.url | url }}"><time class="text-sm" datetime="{{ post.date | htmlDate }}"><i class="text-sm material-icons">calendar_today</i> {{ post.date | readableDate }}</time></a>
-		</footer>
-	</section>
+	</a>
 
 </article>

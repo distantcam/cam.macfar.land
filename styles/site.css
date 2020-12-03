@@ -83,3 +83,14 @@ a.inverted:hover {
 	4px -4px 10px var(--color-main),
 	-4px -4px 10px var(--color-main);
 }
+
+.icon {
+	@apply inline-flex;
+
+	& svg {
+    height: 1em;
+    width: 1em;
+    top: .16em;
+    position: relative;
+	}
+}

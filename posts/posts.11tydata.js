@@ -6,7 +6,7 @@ const https = require('https');
 
 module.exports = {
 	layout: "post",
-	"tags": ["posts"],
+	tags: ["posts"],
   eleventyComputed: {
     post_unsplash: async (data) => await getPhotoData(createUnsplashClient(), data.unsplash_id),
   },
