@@ -2,6 +2,7 @@ require('dotenv').config();
 require('isomorphic-fetch');
 const Unsplash = require('unsplash-js').default;
 const toJson = require("unsplash-js").toJson;
+const https = require('https');
 const simpleIcons = require("simple-icons");
 const { DateTime } = require("luxon");
 const cheerio = require("cheerio");
@@ -20,13 +21,12 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addShortcode("currentyear", () => new Date().getFullYear().toString());
 	eleventyConfig.addShortcode("excerpt", extractExcerpt);
 
-	eleventyConfig.addShortcode("unsplash", dummy);
-
 	eleventyConfig.addNunjucksShortcode("simpleicon", simpleIcon);
 
 	eleventyConfig.addLiquidTag("simpleicon", simpleIconLQ);
 	eleventyConfig.addLiquidTag("post_link", postLink);
 	eleventyConfig.addLiquidTag("codepen", codePen);
+	eleventyConfig.addLiquidTag("unsplash", unsplash);
 
 	eleventyConfig.addFilter("readableDate", (dateObj) => DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy"));
 
@@ -35,10 +35,6 @@ module.exports = function (eleventyConfig) {
 	
 	eleventyConfig.addFilter("page", page);
 };
-
-function dummy() {
-	return "<span>[Dummy]</span>"
-}
 
 function simpleIcon(id) {
 	const data = simpleIcons.get(id);
@@ -101,16 +97,77 @@ function codePen(liquidEngine) {
 	};
 }
 
-// function createUnsplashClient() {
-// 	return new Unsplash({
-// 		accessKey: process.env.UNSPLASH_APP_ID,
-// 		secret: process.env.UNSPLASH_SECRET
-// 	});
-// }
+function unsplash(liquidEngine) {
+	return {
+		parse: function(tagToken, remainTokens) {
+			this.args = tagToken.args;
+		},
+		render: async function(scope, hash) {
+			let isQuoted = this.args.charAt(0) === "'" || this.args.charAt(0) === '"';
+			let id = isQuoted ? liquidEngine.evalValue(this.args, scope) : this.args;
 
-// async function getPhotoJson(unsplash, id) {
-// 	return await unsplash.photos.getPhoto(id).then(toJson);
-// }
+			const unsplash = createUnsplashClient();
+			const data = await getPhotoData(unsplash, id);
+
+			if (data.error) {
+				return `<p>Unsplash error: ${data.error}</p>`
+			}
+
+			const utmSource = scope.contexts[0].metadata.unsplash.utm_source;
+
+			var dataSrc = `${data.urls.raw}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max`;
+			var dataSizes = [];
+			var dataSrcSets = [];
+			var sizes = [30, 100, 300, 600, 1000, 2000];
+			sizes.forEach(size => {
+				dataSizes.push(`(max-width: ${size}px) ${size}px`);
+				dataSrcSets.push(`${data.urls.raw}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=${size}&fit=max ${size}w`);
+			});
+			dataSizes.push('600px');
+
+			return `<figure><img class="lazyload" data-src="${dataSrc}" data-sizes="${dataSizes.join(', ')}" data-srcset="${dataSrcSets.join(', ')}" src="${data.base64}" alt="${data.alt_description}" style="background-color:${data.color}" />
+<figcaption class="unsplash__credit"><p>Photo by <a href="${data.user.html}?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">${data.user.name}</a> on <a href="https://unsplash.com/?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></p></figcaption>
+<div class="jg-caption">${data.user.name}</div>
+</figure>`;
+		}
+	};
+}
+
+function createUnsplashClient() {
+	return new Unsplash({
+		accessKey: process.env.UNSPLASH_APP_ID,
+		secret: process.env.UNSPLASH_SECRET
+	});
+}
+
+async function getBase64ImageFromUrl(imageUrl) {
+	return new Promise((resolve, reject) => {
+		https.get(imageUrl, (resp) => {
+			resp.setEncoding('base64');
+			let body = "data:" + resp.headers["content-type"] + ";base64,";
+			resp.on('data', (data) => { body += data });
+			resp.on('end', () => {
+				resolve(body);
+			});
+		}).on('error', (e) => {
+			reject(e);
+		});
+	});
+}
+
+async function getPhotoData(unsplash, id) {
+	if (!id) {
+		return {};
+	}
+	const json = await unsplash.photos.getPhoto(id).then(toJson);
+	if (json.errors) {
+		return { error: json.errors.join() };
+	}
+
+	const b64 = await getBase64ImageFromUrl(`${json.urls.raw}&fit=max&w=100&fm=jpg&q=10`);
+
+	return { ...json, base64: b64 };
+}
 
 function extractExcerpt(article) {
 	if (!article.hasOwnProperty("templateContent")) {
@@ -123,23 +180,6 @@ function extractExcerpt(article) {
 	const $ = cheerio.load(article.templateContent);
 	return $("p.lead").text();
 }
-
-// function unsplash(id)
-// {
-// 	return `<p>Unsplash ${id}</p>`
-// }
-
-// function unsplashTag(liquidEngine) {
-// 	return {
-// 		parse: function(tagToken, remainingTokens) {
-// 			this.str = tagToken.args;
-// 		},
-// 		render: function(scope, hash) {
-// 			const str = liquidEngine.evalValue(this.str, scope);
-// 			return Promise.resolve(`<p>Unsplash: ${str}</p>`);
-// 		}
-// 	};
-// }
 
 function page(array, n, p) {
 	var from = n * p * -1;
