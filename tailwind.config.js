@@ -1,51 +1,12 @@
 module.exports = {
-	purge: {
-		content: ["_site/**/*.html"],
-	},
-	theme: {
-		typography: (theme) => ({
-			default: {
-				css: [{
-					color: "var(--color-secondary)",
-					'[class~="lead"]': {
-						color: "var(--color-secondary)",
-					},
-					a: {
-						color: "var(--color-primary)",
-					},
-					strong: {
-						color: "var(--color-secondary)",
-					},
-					h1: {
-						color: "var(--color-secondary)",
-					},
-					h2: {
-						color: "var(--color-secondary)",
-					},
-					h3: {
-						color: "var(--color-secondary)",
-					},
-					h4: {
-						color: "var(--color-secondary)",
-					},
-					h5: {
-						color: "var(--color-secondary)",
-					},
-					h6: {
-						color: "var(--color-secondary)",
-					},
-					code: {
-						color: "var(--color-secondary)",
-					},
-				}]
-			}
-		}),
-		extend: {
+  purge: [
+		'./_site/**/*.html'
+	],
+  darkMode: 'class', // false or 'media' or 'class'
+  theme: {
+    extend: {
 			colors: {
-				primary: "var(--color-primary)",
-				secondary: "var(--color-secondary)",
-				main: "var(--color-main)",
-				index: "var(--color-index)",
+				primary: "#dc3545"
 			},
 			spacing: {
 				"128": "32rem",
@@ -54,8 +15,46 @@ module.exports = {
 			maxWidth: {
 				"7xl": "80rem",
 			},
+
+			typography: (theme) => ({
+				DEFAULT: {
+					css: {
+						color: theme("colors.gray.700"),
+						'[class~="lead"]': { color: theme("colors.gray.700") },
+						a: { color: "#dc3545", "text-decoration": "none" },
+						strong: { color: theme("colors.gray.700") },
+						h1: { color: theme("colors.gray.700") },
+						h2: { color: theme("colors.gray.700") },
+						h3: { color: theme("colors.gray.700") },
+						h4: { color: theme("colors.gray.700") },
+						h5: { color: theme("colors.gray.700") },
+						h6: { color: theme("colors.gray.700") },
+						code: { color: theme("colors.gray.700") },
+					}
+				}, 
+
+				dark: {
+					css: {
+						color: theme("colors.gray.400"),
+						'[class~="lead"]': { color: theme("colors.gray.400") },
+						strong: { color: theme("colors.gray.400") },
+						h1: { color: theme("colors.gray.400") },
+						h2: { color: theme("colors.gray.400") },
+						h3: { color: theme("colors.gray.400") },
+						h4: { color: theme("colors.gray.400") },
+						h5: { color: theme("colors.gray.400") },
+						h6: { color: theme("colors.gray.400") },
+						code: { color: theme("colors.gray.400") },
+					}
+				}
+			})
 		},
+  },
+  variants: {
+		extend: {
+			typography: ["dark"],
+			visibility: ['responsive', 'dark'],
+		}
 	},
-	variants: {},
-	plugins: [require("@tailwindcss/typography")],
-};
+  plugins: [require('@tailwindcss/typography')],
+}

@@ -47,7 +47,7 @@
 	--prism-variable: #e53935;
 }
 
-:root[data-theme='dark'] {
+:root[class*='dark'] {
 	--prism-color: #eee;
 	--prism-background: #2f2f2f;
 	--prism-language: #eee;

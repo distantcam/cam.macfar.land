@@ -7,7 +7,7 @@
 		--unsplash-url-2xl: url("{{ unsplash.default.urls.raw | safe }}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2560&fit=max");
 	}
 
-	:root[data-theme='dark'] {
+	:root[class*='dark'] {
 		--unsplash-url-sm: url("{{ unsplash.default_dark.urls.raw | safe }}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=640&fit=max");
 		--unsplash-url-md: url("{{ unsplash.default_dark.urls.raw | safe }}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=768&fit=max");
 		--unsplash-url-lg: url("{{ unsplash.default_dark.urls.raw | safe }}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max");

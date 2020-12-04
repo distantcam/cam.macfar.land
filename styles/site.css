@@ -1,25 +1,5 @@
 @tailwind base;
 
-:root {
-	--color-main: theme("colors.gray.100");
-	--color-index: theme("colors.gray.200");
-	--color-primary: #dc3545;
-	--color-secondary: theme("colors.gray.700");
-
-	--opacity-light: 1;
-	--opacity-dark: 0;
-}
-
-:root[data-theme="dark"] {
-	--color-main: theme("colors.gray.900");
-	--color-index: theme("colors.gray.800");
-	--color-primary: #dc3545;
-	--color-secondary: theme("colors.gray.400");
-
-	--opacity-light: 0;
-	--opacity-dark: 1;
-}
-
 html.transition,
 html.transition *,
 html.transition *:before,
@@ -35,11 +15,11 @@ a {
 }
 
 a:hover {
-	@apply text-secondary;
+	@apply text-gray-700 dark:text-gray-400;
 }
 
 a.inverted {
-	@apply text-secondary; 
+	@apply text-gray-700 dark:text-gray-400; 
 }
 
 a.inverted:focus,
@@ -61,35 +41,43 @@ a.inverted:hover {
 	}
 }
 
+@layer utilities {
+	@variants dark {
+		.header-shadow-dark {
+			text-shadow:
+			2px 2px 10px theme("colors.gray.900"),
+			-2px 2px 10px theme("colors.gray.900"),
+			2px -2px 10px theme("colors.gray.900"),
+			-2px -2px 10px theme("colors.gray.900"),
+	
+			4px 4px 10px theme("colors.gray.900"),
+			-4px 4px 10px theme("colors.gray.900"),
+			4px -4px 10px theme("colors.gray.900"),
+			-4px -4px 10px theme("colors.gray.900");
+		}
+		.header-shadow-light {
+			text-shadow:
+			2px 2px 10px theme("colors.gray.100"),
+			-2px 2px 10px theme("colors.gray.100"),
+			2px -2px 10px theme("colors.gray.100"),
+			-2px -2px 10px theme("colors.gray.100"),
+
+			4px 4px 10px theme("colors.gray.100"),
+			-4px 4px 10px theme("colors.gray.100"),
+			4px -4px 10px theme("colors.gray.100"),
+			-4px -4px 10px theme("colors.gray.100");
+		}
+	}
+}
+
 @tailwind utilities;
-
-.theme-light {
-	opacity: var(--opacity-light);
-}
-
-.theme-dark {
-	opacity: var(--opacity-dark);
-}
-
-.header-shadow {
-	text-shadow:
-	2px 2px 10px var(--color-main),
-	-2px 2px 10px var(--color-main),
-	2px -2px 10px var(--color-main),
-	-2px -2px 10px var(--color-main),
-
-	4px 4px 10px var(--color-main),
-	-4px 4px 10px var(--color-main),
-	4px -4px 10px var(--color-main),
-	-4px -4px 10px var(--color-main);
-}
 
 .icon {
 	@apply inline-flex;
 
 	& svg {
-    height: 1em;
-    width: 1em;
+    height: 1.3em;
+    width: 1.3em;
     top: .16em;
     position: relative;
 	}

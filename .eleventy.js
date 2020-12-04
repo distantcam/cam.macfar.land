@@ -1,8 +1,7 @@
 require('dotenv').config();
-require('isomorphic-fetch');
-const Unsplash = require('unsplash-js').default;
-const toJson = require("unsplash-js").toJson;
+const nodeFetch = require('node-fetch');
 const https = require('https');
+const { createApi } = require('unsplash-js');
 const simpleIcons = require("simple-icons");
 const { DateTime } = require("luxon");
 const cheerio = require("cheerio");
@@ -55,7 +54,7 @@ function simpleIconLQ(liquidEngine) {
 			let isQuoted = this.args.charAt(0) === "'" || this.args.charAt(0) === '"';
 			let id = isQuoted ? liquidEngine.evalValue(this.args, scope) : this.args;
 
-			return Promise.resolve(`<div class="icon">${simpleIcon(id)}</div>`);
+			return Promise.resolve(`<div class="text-2xl icon">${simpleIcon(id)}</div>`);
 		}
 	};
 }
@@ -134,9 +133,10 @@ function unsplash(liquidEngine) {
 }
 
 function createUnsplashClient() {
-	return new Unsplash({
+	return createApi({
 		accessKey: process.env.UNSPLASH_APP_ID,
-		secret: process.env.UNSPLASH_SECRET
+		secret: process.env.UNSPLASH_SECRET,
+		fetch: nodeFetch
 	});
 }
 
@@ -159,10 +159,11 @@ async function getPhotoData(unsplash, id) {
 	if (!id) {
 		return {};
 	}
-	const json = await unsplash.photos.getPhoto(id).then(toJson);
-	if (json.errors) {
-		return { error: json.errors.join() };
+	const result = await unsplash.photos.get({ photoId: id });
+	if (result.errors) {
+		return { error: result.errors.join() };
 	}
+	const json = result.response;
 
 	const b64 = await getBase64ImageFromUrl(`${json.urls.raw}&fit=max&w=100&fm=jpg&q=10`);
 

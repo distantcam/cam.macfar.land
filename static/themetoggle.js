@@ -19,13 +19,15 @@ document.getElementById("toggle").addEventListener("click", function (event) {
 });
 
 function updateTheme(newMode) {
-	document.documentElement.setAttribute("data-theme", newMode);
+	// document.documentElement.setAttribute("data-theme", newMode);
 	const moon = document.getElementById("moon");
 	const sun = document.getElementById("sun");
 	if (newMode === "light") {
+		document.documentElement.classList.remove('dark');
 		sun.classList.add("hidden");
 		moon.classList.remove("hidden");
 	} else {
+		document.documentElement.classList.add('dark');
 		sun.classList.remove("hidden");
 		moon.classList.add("hidden");
 	}
