@@ -22,7 +22,6 @@ a.inverted {
 	@apply text-gray-700 dark:text-gray-400; 
 }
 
-a.inverted:focus,
 a.inverted:hover {
 	@apply text-primary;
 }
