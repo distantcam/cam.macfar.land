@@ -7,16 +7,16 @@ layout: default
 <header class="relative pt-12 pb-20 bg-center bg-cover masthead md:pt-24 md:pb-40">
 	<h1 class="max-w-sm mx-auto text-3xl text-center md:text-5xl sm:max-w-md md:max-w-2xl header-shadow-light dark:header-shadow-dark">{{ metadata.subtitle }}</h1>
 	<h3 class="max-w-sm mx-auto text-xl text-center md:text-3xl sm:max-w-md md:max-w-2xl header-shadow-light dark:header-shadow-dark">{{ metadata.description }}</h3>
-	<div class="absolute inset-x-0 bottom-0 max-w-6xl mx-auto text-xs md:text-sm dark:invisible">
+	<div class="absolute inset-x-0 bottom-0 mx-auto text-xs max-w-7xl md:text-sm dark:invisible">
 		<p class="float-right px-2 mx-5 bg-gray-100 dark:bg-gray-900">Photo by <a href="https://unsplash.com/@{{ unsplash.default.user.username }}?utm_source={{ metadata.unsplash.utm_source }}&utm_medium=referral">{{ unsplash.default.user.name }}</a> on <a href="https://unsplash.com/?utm_source={{ metadata.unsplash.utm_source }}&utm_medium=referral">Unsplash</a></p>
 	</div>
-	<div class="absolute inset-x-0 bottom-0 invisible max-w-6xl mx-auto text-xs md:text-sm dark:visible">
+	<div class="absolute inset-x-0 bottom-0 invisible mx-auto text-xs max-w-7xl md:text-sm dark:visible">
 		<p class="float-right px-2 mx-5 bg-gray-100 dark:bg-gray-900">Photo by <a href="https://unsplash.com/@{{ unsplash.default_dark.user.username }}?utm_source={{ metadata.unsplash.utm_source }}&utm_medium=referral">{{ unsplash.default_dark.user.name }}</a> on <a href="https://unsplash.com/?utm_source={{ metadata.unsplash.utm_source }}&utm_medium=referral">Unsplash</a></p>
 	</div>
 </header>
 
 <main class="bg-gray-200 dark:bg-gray-800">
-	<div class="pt-6 xl:pt-12 md:max-w-6xl md:mx-auto md:flex md:flex-wrap">
+	<div class="pt-6 xl:pt-12 md:max-w-7xl md:mx-auto md:flex md:flex-wrap">
 	{% for post in collections.posts | page(10, 1) %}
 		{% include "partial/post-card.njk" %}
 	{% endfor %}

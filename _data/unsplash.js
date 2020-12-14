@@ -2,9 +2,7 @@ require('dotenv').config();
 const nodeFetch = require('node-fetch');
 const https = require('https');
 const { createApi } = require('unsplash-js');
-
-const unsplash_default_id = "q10VITrVYUM";
-const unsplash_default_dark_id = "0gkw_9fy0eQ";
+const metadata = require("./metadata.json");
 
 function createUnsplashClient() {
 	return createApi({
@@ -47,8 +45,8 @@ async function getBase64ImageFromUrl(imageUrl) {
 module.exports = async function() {
 	const unsplash = createUnsplashClient();
 
-	const unsplash_default = await getPhotoData(unsplash, unsplash_default_id);
-	const unsplash_default_dark = await getPhotoData(unsplash, unsplash_default_dark_id);
+	const unsplash_default = await getPhotoData(unsplash, metadata.unsplash.default_id);
+	const unsplash_default_dark = await getPhotoData(unsplash, metadata.unsplash.default_dark_id);
 
 	return {
 		"default": unsplash_default,

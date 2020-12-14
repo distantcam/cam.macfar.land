@@ -32,7 +32,7 @@ a.inverted:hover {
 		flex-direction: row;
 	
 		& .post-card__image {
-			min-height: 20rem;
+			min-height: 24rem;
 			position: relative;
 			flex: 2 2 auto;
 			width: auto;
