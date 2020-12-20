@@ -125,8 +125,8 @@ function unsplash(liquidEngine) {
 			dataSizes.push('600px');
 
 			return `<figure><img class="lazyload" data-src="${dataSrc}" data-sizes="${dataSizes.join(', ')}" data-srcset="${dataSrcSets.join(', ')}" src="${data.base64}" alt="${data.alt_description}" style="background-color:${data.color}" />
-<figcaption class="unsplash__credit"><p>Photo by <a href="${data.user.html}?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">${data.user.name}</a> on <a href="https://unsplash.com/?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></p></figcaption>
-<div class="jg-caption">${data.user.name}</div>
+<figcaption class="unsplash__credit"><p>Photo by <a href="${data.user.html}?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">${data.user.name}</a></p></figcaption>
+<div class="jg-caption">📷 ${data.user.name}</div>
 </figure>`;
 		}
 	};

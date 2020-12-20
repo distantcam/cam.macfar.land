@@ -17,7 +17,7 @@ layout: default
 
 <main class="relative px-10 pt-10 mx-auto bg-gray-100 dark:bg-gray-900 lg:min-h-24 lg:max-w-3xl xl:max-w-5xl">
 	{% if unsplash_id %}
-	<p class="absolute top-0 right-0 px-5 py-3 text-sm">Photo by <a href="https://unsplash.com/@{{ post_unsplash.user.username }}?utm_source={{ metadata.unsplash.utm_source }}&utm_medium=referral">{{ post_unsplash.user.name }}</a> on <a href="https://unsplash.com/?utm_source={{ metadata.unsplash.utm_source }}&utm_medium=referral">Unsplash</a></p>
+	<p class="absolute top-0 right-0 px-5 py-3 text-sm">Photo by <a href="https://unsplash.com/@{{ post_unsplash.user.username }}?utm_source={{ metadata.unsplash.utm_source }}&utm_medium=referral">{{ post_unsplash.user.name }}</a></p>
 	{% endif %}
 
 	<div class="m-auto prose-sm prose sm:prose md:prose-lg xl:prose-xl dark:prose-dark">
