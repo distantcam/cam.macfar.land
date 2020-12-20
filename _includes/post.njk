@@ -4,12 +4,15 @@ layout: default
 
 <header class="pt-5 mx-auto text-center lg:pt-24 lg:-mb-24 lg:max-w-5xl xl:max-w-7xl">
 
-	<time datetime="{{ date | htmlDate }}"><i class="text-sm material-icons">calendar_today</i> {{ date | readableDate }}</time>
+	<time datetime="{{ date | htmlDate }}"><i class="text-sm material-icons text-primary">calendar_today</i> {{ date | readableDate }}</time>
 
 	<h1 class="pb-5 text-5xl leading-tight">{{ title }}</h1>
 
-	{# <%- include('_partial/categories', { page }) %> #}
-	{# <%- include('_partial/tags', { page }) %> #}
+	<ul>
+	{% for i in range(1, tags.length) %}
+		<li class="inline text-sm font-bold uppercase text-primary">{{ tags[i] }}</li>
+	{% endfor %}
+	</ul>
 
 	{% include "partial/page-head.njk" %}
 	
