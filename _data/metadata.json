@@ -2,6 +2,7 @@
 	"title": "Cam MacFarland",
 	"subtitle": "Hi, I'm Cam",
 	"url": "https://cam.macfar.land/",
+	"feedUrl": "/feed.rss",
 	"description": "I'm a software engineer, occasional writer, open source contributer and all round nerd from Perth, Australia",
 	"author": "Cameron MacFarland",
 	"google_analytics": "UA-28399680-2",

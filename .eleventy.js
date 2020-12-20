@@ -6,6 +6,7 @@ const simpleIcons = require("simple-icons");
 const { DateTime } = require("luxon");
 const cheerio = require("cheerio");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.setUseGitIgnore(false);
@@ -13,6 +14,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.setDataDeepMerge(true);
 
 	eleventyConfig.addPlugin(syntaxHighlight);
+	eleventyConfig.addPlugin(pluginRss);
 
 	eleventyConfig.addPassthroughCopy({ "_tmp/*.css": "." });
 	eleventyConfig.addPassthroughCopy({ static: "." });
