@@ -3,12 +3,12 @@ title: "The State of MVVM"
 slug: "the-state-of-mvvm"
 date: 2012-08-07
 unsplash_id: Oaqk7qqNh_c
-aliases:
-    - /blog/the-state-of-mvvm/
 tags: ["architecture", "mvvm"]
 ---
 
-<p class="lead">Ok, so I've been meaning to (procrastinating actually) write a blog entry for a while now.</p>
+Ok, so I've been meaning to (procrastinating actually) write a blog entry for a while now.
+
+---
 
 Over the past year or so I've been struggling to come up with a simple, easy, repeatable way to develop applications for WPF. And while the [**M**odel-**V**iew-**V**iew**M**odel](http://en.wikipedia.org/wiki/Model_View_ViewModel) (**MVVM**) pattern gets us a long way there it's not without issues.
 

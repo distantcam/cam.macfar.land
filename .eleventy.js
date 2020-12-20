@@ -4,14 +4,16 @@ const https = require('https');
 const { createApi } = require('unsplash-js');
 const simpleIcons = require("simple-icons");
 const { DateTime } = require("luxon");
-const cheerio = require("cheerio");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const striptags = require("striptags");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.setUseGitIgnore(false);
 
 	eleventyConfig.setDataDeepMerge(true);
+
+	eleventyConfig.setFrontMatterParsingOptions({ excerpt: true });
 
 	eleventyConfig.addPlugin(syntaxHighlight);
 	eleventyConfig.addPlugin(pluginRss);
@@ -20,7 +22,6 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ static: "." });
 
 	eleventyConfig.addShortcode("currentyear", () => new Date().getFullYear().toString());
-	eleventyConfig.addShortcode("excerpt", extractExcerpt);
 
 	eleventyConfig.addNunjucksShortcode("simpleicon", simpleIcon);
 
@@ -35,6 +36,8 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addFilter("htmlDate", (dateObj) => DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd'));
 	
 	eleventyConfig.addFilter("page", page);
+
+	eleventyConfig.addFilter("striptags", (data) => striptags(data));
 };
 
 function simpleIcon(id) {
@@ -170,18 +173,6 @@ async function getPhotoData(unsplash, id) {
 	const b64 = await getBase64ImageFromUrl(`${json.urls.raw}&fit=max&w=100&fm=jpg&q=10`);
 
 	return { ...json, base64: b64 };
-}
-
-function extractExcerpt(article) {
-	if (!article.hasOwnProperty("templateContent")) {
-		console.warn(
-			'Failed to extract excerpt: Document has no property "templateContent".'
-		);
-		return null;
-	}
-
-	const $ = cheerio.load(article.templateContent);
-	return $("p.lead").text();
 }
 
 function page(array, n, p) {

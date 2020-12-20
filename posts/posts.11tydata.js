@@ -6,9 +6,10 @@ const { createApi } = require('unsplash-js');
 module.exports = {
 	layout: "post",
 	tags: ["posts"],
-  eleventyComputed: {
-    post_unsplash: async (data) => await getPhotoData(createUnsplashClient(), data.unsplash_id),
-  },
+	permalink: "{{title | slug}}/index.html",
+	eleventyComputed: {
+		post_unsplash: async (data) => await getPhotoData(createUnsplashClient(), data.unsplash_id),
+	},
 };
 
 function createUnsplashClient() {

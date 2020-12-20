@@ -3,12 +3,12 @@ title: "Existing MVVM Frameworks"
 slug: "existing-mvvm-frameworks"
 date: 2012-08-13
 unsplash_id: wjSJ1F4JUdk
-aliases:
-    - /blog/existing-mvvm-frameworks/
 tags: ["architecture", "mvvm"]
 ---
 
-<p class="lead">This post is part of a series about desktop application development in WPF using MVVM.</p>
+This post is part of a series about desktop application development in WPF using MVVM.
+
+---
 
 Currently there are at least [19 MVVM frameworks](http://www.japf.fr/silverlight/mvvm/) out there as well as any number of privately rolled frameworks for doing MVVM style development. But what makes them MVVM frameworks?
 

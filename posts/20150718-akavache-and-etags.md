@@ -4,11 +4,11 @@ slug: "akavache-and-etags"
 date: 2015-07-18
 unsplash_id: J8YmnoMG2hg
 tags: [akavache, etag, web, cache]
-aliases:
-    - /blog/akavache-and-etags/
 ---
 
-<p class="lead">Akavache is a cool caching library from the prolific Anaïs Betts that simplifies caching of data in your application. I wanted to use it with web calls that provided an ETag for caching but Akavache didn't support this out of the box.</p>
+Akavache is a cool caching library from the prolific Anaïs Betts that simplifies caching of data in your application. I wanted to use it with web calls that provided an ETag for caching but Akavache didn't support this out of the box.
+
+---
 
 There's a method in Akavache called `GetAndFetchLatest` which sounded like what I wanted, but the fetch part was time based, not ETag, as the fetch could be anything not just a web query.
 

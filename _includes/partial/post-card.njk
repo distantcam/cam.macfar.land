@@ -43,7 +43,7 @@
 			</header>
 			
 			<section class="flex-auto mt-6 mb-3">
-				<span class="inline-block align-middle">{% excerpt post %}</span>
+				<span class="inline-block align-middle">{{ post.data.excerpt or post.data.page.excerpt | safe }}</span>
 			</section>
 		</a>
 	</div>

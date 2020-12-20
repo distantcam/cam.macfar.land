@@ -4,11 +4,11 @@ slug: "attachments"
 date: 2012-09-17
 unsplash_id: vJICk89hFbU
 tags: ["architecture", "mvvm"]
-aliases:
-    - /blog/attachments/
 ---
 
-<p class="lead">Where we reach the crazy portion of the program.</p>
+Where we reach the crazy portion of the program.
+
+---
 
 One of the biggest problems I've seen with any non-trivial MVVM application is that of mega-ViewModels AKA [God objects](http://en.wikipedia.org/wiki/God_object). And it's not just me. Many people have the same problem.
 

@@ -7,9 +7,9 @@ module.exports = {
 	layout: "page",
 	tags: ["pages"],
 	permalink: "{{page.fileSlug}}/index.html",
-  eleventyComputed: {
-    post_unsplash: async (data) => await getPhotoData(createUnsplashClient(), data.unsplash_id),
-  },
+	eleventyComputed: {
+		post_unsplash: async (data) => await getPhotoData(createUnsplashClient(), data.unsplash_id),
+	},
 };
 
 function createUnsplashClient() {

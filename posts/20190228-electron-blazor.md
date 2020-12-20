@@ -6,10 +6,11 @@ tags:
   - blazor
   - dotnet
 date: 2019-02-28 23:14:01
-categories:
 ---
 
-<p class="lead">As a .NET desktop developer I've always felt confined to Windows if I wanted to make a C# desktop application. There have been other frameworks for creating cross platform C# applications, but they have still felt very Windows centric. Then I heard about Blazor.</p>
+As a .NET desktop developer I've always felt confined to Windows if I wanted to make a C# desktop application. There have been other frameworks for creating cross platform C# applications, but they have still felt very Windows centric. Then I heard about Blazor.
+
+---
 
 ### Blazor
 

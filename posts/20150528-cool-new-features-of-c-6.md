@@ -4,11 +4,11 @@ slug: "cool-new-features-of-csharp-6"
 date: 2015-05-28
 unsplash_id: 466ENaLuhLY
 tags: [c#, language, roslyn]
-aliases:
-    - /blog/cool-new-features-of-c-6/
 ---
 
-<p class="lead">C# 6.0 is coming soon, and being a brand spanking new compiler there's a bunch of new features and fixes to the language.</p>
+C# 6.0 is coming soon, and being a brand spanking new compiler there's a bunch of new features and fixes to the language.
+
+---
 
 Here's the list.
 

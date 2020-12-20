@@ -5,7 +5,9 @@ tags: web
 date: 2019-12-29 23:53:37
 ---
 
-<p class="lead">Allowing users to choose either a light or dark theme when viewing your website is great for accessibility. So naturally I wanted to add it to my blog. Unfortunately my blog doesn't use a framework like React or Vue, so I had to use CSS variables and JavaScript.</p>
+Allowing users to choose either a light or dark theme when viewing your website is great for accessibility. So naturally I wanted to add it to my blog. Unfortunately my blog doesn't use a framework like React or Vue, so I had to use CSS variables and JavaScript.
+
+---
 
 ## The CSS {% simpleicon CSS3 %}
 
