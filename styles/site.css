@@ -44,6 +44,12 @@ a.inverted:hover {
 }
 
 @layer utilities {
+	@variants responsive {
+		.list-item {
+			display: list-item;
+		}	
+	}
+
 	@variants dark {
 		.header-shadow-dark {
 			text-shadow:

@@ -5,11 +5,9 @@
 	"feedUrl": "/feed.rss",
 	"description": "I'm a software engineer, occasional writer, open source contributer and all round nerd from Perth, Australia",
 	"author": "Cameron MacFarland",
-	"google_analytics": "UA-28399680-2",
 	"navigation": {
 		"Home": "/",
-		"About": "/about",
-		"Feed": "/feed.rss"
+		"About": "/about"
 	},
 	"social": {
 		"twitter": "https://twitter.com/distantcam",
