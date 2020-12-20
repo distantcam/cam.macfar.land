@@ -29,7 +29,10 @@ a.inverted:hover {
 @media (min-width: 768px) {
 	.post-card:nth-of-type(6n+1) {
 		width: 100%;
-		flex-direction: row;
+
+		& .post-card__container {
+			flex-direction: row;
+		}
 	
 		& .post-card__image {
 			min-height: 24rem;

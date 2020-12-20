@@ -1,49 +1,51 @@
-<article class="flex flex-col mx-5 mb-5 overflow-hidden bg-gray-100 rounded post-card dark:bg-gray-900 md:flex-grow md:flex-shrink xl:mb-10 md:w-1/2 lg:w-1/3" id="{{ post.slug }}">
+<article class="flex post-card md:flex-grow md:flex-shrink md:w-1/2 lg:w-1/3" id="{{ post.slug }}">
 
-	<a class="relative w-full h-48 post-card__image" href="{{ post.url | url }}" aria-hidden="true">
-		{% if post.data.unsplash_id %}
-		{% if post.data.post_unsplash.error %}
-			<p class="flex items-center justify-center w-full h-full text-4xl">{{ post.data.post_unsplash.error }}</p>
-		{% else %}
-			<img class="absolute inset-0 block object-cover w-full h-full lazyload"
-				data-src="{{ post.data.post_unsplash.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max"
-				data-sizes="{% for size in [30, 100, 300, 600, 1000, 2000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
-				data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000, 2000] %}{{ comma() }}{{ post.data.post_unsplash.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w={{ size }}&fit=max {{ size }}w{% endfor %}"
-				src="{{ post.data.post_unsplash.base64 }}"
-				alt="{{ post.data.post_unsplash.alt_description }}"
-				style="background-color:{{ post.data.post_unsplash.color }}"
-				/>
-		{% endif %}
-		{% else %}
-			<img class="absolute inset-0 block object-cover w-full h-full lazyload theme-light"
-				data-src="{{ unsplash.default.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max"
-				data-sizes="{% for size in [30, 100, 300, 600, 1000, 2000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
-				data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000, 2000] %}{{ comma() }}{{ unsplash.default.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w={{ size }}&fit=max {{ size }}w{% endfor %}"
-				src="{{ unsplash.default.base64 }}"
-				alt="{{ unsplash.default.alt_description }}"
-				style="background-color:{{ unsplash.default.color }}"
-				/>
-			<img class="absolute inset-0 block object-cover w-full h-full lazyload theme-dark"
-				data-src="{{ unsplash.default_dark.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max"
-				data-sizes="{% for size in [30, 100, 300, 600, 1000, 2000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
-				data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000, 2000] %}{{ comma() }}{{ unsplash.default_dark.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w={{ size }}&fit=max {{ size }}w{% endfor %}"
-				src="{{ unsplash.default_dark.base64 }}"
-				alt="{{ unsplash.default_dark.alt_description }}"
-				style="background-color:{{ unsplash.default_dark.color }}"
-				/>
-		{% endif %}
-	</a>
+	<div class="flex flex-col w-full mx-5 mb-5 overflow-hidden bg-gray-100 rounded shadow-lg md:mb-10 dark:bg-gray-900 post-card__container">
+		<a class="relative w-full h-48 post-card__image" href="{{ post.url | url }}" aria-hidden="true">
+			{% if post.data.unsplash_id %}
+			{% if post.data.post_unsplash.error %}
+				<p class="flex items-center justify-center w-full h-full text-4xl">{{ post.data.post_unsplash.error }}</p>
+			{% else %}
+				<img class="absolute inset-0 block object-cover w-full h-full lazyload"
+					data-src="{{ post.data.post_unsplash.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max"
+					data-sizes="{% for size in [30, 100, 300, 600, 1000, 2000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000, 2000] %}{{ comma() }}{{ post.data.post_unsplash.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w={{ size }}&fit=max {{ size }}w{% endfor %}"
+					src="{{ post.data.post_unsplash.base64 }}"
+					alt="{{ post.data.post_unsplash.alt_description }}"
+					style="background-color:{{ post.data.post_unsplash.color }}"
+					/>
+			{% endif %}
+			{% else %}
+				<img class="absolute inset-0 block object-cover w-full h-full lazyload theme-light"
+					data-src="{{ unsplash.default.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max"
+					data-sizes="{% for size in [30, 100, 300, 600, 1000, 2000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000, 2000] %}{{ comma() }}{{ unsplash.default.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w={{ size }}&fit=max {{ size }}w{% endfor %}"
+					src="{{ unsplash.default.base64 }}"
+					alt="{{ unsplash.default.alt_description }}"
+					style="background-color:{{ unsplash.default.color }}"
+					/>
+				<img class="absolute inset-0 block object-cover w-full h-full lazyload theme-dark"
+					data-src="{{ unsplash.default_dark.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max"
+					data-sizes="{% for size in [30, 100, 300, 600, 1000, 2000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000, 2000] %}{{ comma() }}{{ unsplash.default_dark.urls.raw | safe}}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w={{ size }}&fit=max {{ size }}w{% endfor %}"
+					src="{{ unsplash.default_dark.base64 }}"
+					alt="{{ unsplash.default_dark.alt_description }}"
+					style="background-color:{{ unsplash.default_dark.color }}"
+					/>
+			{% endif %}
+		</a>
 
-	<a class="flex flex-col flex-1 px-4 py-3 inverted post-card__content" href="{{ post.url | url }}">
-		<header class="flex-initial">
-			<p class="text-xs font-normal uppercase text-primary">{{ post.data.tags[1] }}</p>
-			<h2 class="text-xl font-normal">{{ post.data.title }}</h2>
-			<time class="text-sm text-gray-700 dark:text-gray-400" datetime="{{ post.date | htmlDate }}"><i class="text-sm material-icons">calendar_today</i> {{ post.date | readableDate }}</time>
-		</header>
-		
-		<section class="flex-auto mt-6 mb-3">
-			<span class="inline-block align-middle">{% excerpt post %}</span>
-		</section>
-	</a>
+		<a class="flex flex-col flex-1 px-4 py-3 inverted post-card__content" href="{{ post.url | url }}">
+			<header class="flex-initial">
+				<p class="text-xs font-normal uppercase text-primary">{{ post.data.tags[1] }}</p>
+				<h2 class="text-xl font-normal">{{ post.data.title }}</h2>
+				<time class="text-sm text-gray-700 dark:text-gray-400" datetime="{{ post.date | htmlDate }}"><i class="text-sm material-icons">calendar_today</i> {{ post.date | readableDate }}</time>
+			</header>
+			
+			<section class="flex-auto mt-6 mb-3">
+				<span class="inline-block align-middle">{% excerpt post %}</span>
+			</section>
+		</a>
+	</div>
 
 </article>
