@@ -96,7 +96,7 @@ pre[class*="language-"] {
 	font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
 	text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
 	text-align: left;
-	white-space: pre;
+	white-space: pre-wrap;
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;

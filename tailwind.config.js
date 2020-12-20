@@ -5,7 +5,7 @@ module.exports = {
 	darkMode: 'class', // false or 'media' or 'class'
 	theme: {
 		fontFamily: {
-      sans: ["Segoe UI", 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Roboto', "Helvetica Neue", 'Arial', "Noto Sans", 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+      sans: ["Open Sans", 'sans-serif'],
     },
 		fontSize: {
 			xs: '0.75rem',
@@ -29,6 +29,7 @@ module.exports = {
 			minHeight: (theme) => theme("spacing"),
 			maxWidth: {
 				"7xl": "80rem",
+				"prose-xl": "80ch"
 			},
 
 			typography: (theme) => ({

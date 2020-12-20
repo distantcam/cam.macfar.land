@@ -109,7 +109,7 @@ function unsplash(liquidEngine) {
 			const data = await getPhotoData(unsplash, id);
 
 			if (data.error) {
-				return `<p>Unsplash error: ${data.error}</p>`
+				return `<p>Unsplash error: '${data.error}' PhotoId: ${id}</p>`
 			}
 
 			const utmSource = scope.contexts[0].metadata.unsplash.utm_source;
