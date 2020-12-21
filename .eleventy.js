@@ -7,11 +7,14 @@ const { DateTime } = require("luxon");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const striptags = require("striptags");
+const fs = require("fs");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.setUseGitIgnore(false);
 
 	eleventyConfig.setDataDeepMerge(true);
+
+	eleventyConfig.setBrowserSyncConfig({ callbacks: { ready: ready }});
 
 	eleventyConfig.setFrontMatterParsingOptions({ excerpt: true });
 
@@ -39,6 +42,18 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addFilter("striptags", (data) => striptags(data));
 };
+
+function ready(err, bs) {
+	bs.addMiddleware("*", (req, res) => {
+		const content_404 = fs.readFileSync('_site/404.html');
+		// Provides the 404 content without redirect.
+		res.write(content_404);
+		// Add 404 http status code in request header.
+		// res.writeHead(404, { "Content-Type": "text/html" });
+		res.writeHead(404);
+		res.end();
+	});
+}
 
 function simpleIcon(id) {
 	const data = simpleIcons.get(id);

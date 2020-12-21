@@ -1,5 +1,4 @@
 ---
-title: "About Cam"
 unsplash_id: RESEQty1uvc
 ---
 Hi, I'm Cameron. I'm a software engineer, gamer, and very occasional blogger. Currently I live in Perth, Australia.
