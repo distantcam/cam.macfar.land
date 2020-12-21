@@ -151,13 +151,13 @@ function unsplash(liquidEngine) {
 
 			const utmSource = scope.contexts[0].metadata.unsplash.utm_source;
 
-			var dataSrc = `${data.urls.raw}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1024&fit=max`;
+			var dataSrc = `${data.urls.raw}&fm=png&crop=entropy&w=1024&fit=max`;
 			var dataSizes = [];
 			var dataSrcSets = [];
 			var sizes = [30, 100, 300, 600, 1000, 2000];
 			sizes.forEach(size => {
 				dataSizes.push(`(max-width: ${size}px) ${size}px`);
-				dataSrcSets.push(`${data.urls.raw}&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=${size}&fit=max ${size}w`);
+				dataSrcSets.push(`${data.urls.raw}&fm=png&crop=entropy&w=${size}&fit=max ${size}w`);
 			});
 			dataSizes.push('600px');
 
@@ -202,7 +202,7 @@ async function getPhotoData(unsplash, id) {
 	}
 	const json = result.response;
 
-	const b64 = await getBase64ImageFromUrl(`${json.urls.raw}&fit=max&w=100&fm=jpg&q=10`);
+	const b64 = await getBase64ImageFromUrl(`${json.urls.raw}&fit=max&w=100&fm=png&q=10`);
 
 	return { ...json, base64: b64 };
 }

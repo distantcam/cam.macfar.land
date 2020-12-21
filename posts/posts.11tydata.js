@@ -45,7 +45,7 @@ async function getPhotoData(unsplash, id) {
 	}
 	const json = result.response;
 
-	const b64 = await getBase64ImageFromUrl(`${json.urls.raw}&fit=max&w=100&fm=jpg&q=10`);
+	const b64 = await getBase64ImageFromUrl(`${json.urls.raw}&fit=max&w=100&fm=png&q=10`);
 
 	return { ...json, base64: b64 };
 }
