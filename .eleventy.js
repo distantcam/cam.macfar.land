@@ -8,13 +8,18 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const striptags = require("striptags");
 const fs = require("fs");
+const htmlmin = require("html-minifier");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.setUseGitIgnore(false);
 
 	eleventyConfig.setDataDeepMerge(true);
 
-	eleventyConfig.setBrowserSyncConfig({ callbacks: { ready: ready }});
+	if (process.env.ELEVENTY_PRODUCTION) {
+		eleventyConfig.addTransform("htmlmin", htmlminTransform);
+	} else {
+		eleventyConfig.setBrowserSyncConfig({ callbacks: { ready: browserSyncReady }});
+	}
 
 	eleventyConfig.setFrontMatterParsingOptions({ excerpt: true });
 
@@ -43,7 +48,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addFilter("striptags", (data) => striptags(data));
 };
 
-function ready(err, bs) {
+function browserSyncReady(err, bs) {
 	bs.addMiddleware("*", (req, res) => {
 		const content_404 = fs.readFileSync('_site/404.html');
 		// Provides the 404 content without redirect.
@@ -53,6 +58,18 @@ function ready(err, bs) {
 		res.writeHead(404);
 		res.end();
 	});
+}
+
+function htmlminTransform(content, outputPath) {
+	if( outputPath.endsWith(".html") ) {
+		let minified = htmlmin.minify(content, {
+			useShortDoctype: true,
+			removeComments: true,
+			collapseWhitespace: true
+		});
+		return minified;
+	}
+	return content;
 }
 
 function simpleIcon(id) {
