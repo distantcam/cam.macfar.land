@@ -93,7 +93,7 @@ a.inverted:hover {
 
 .lazyload,
 .lazyloading {
-	filter: blur(4px);
+	filter: blur(8px);
 }
 
 .lazyloaded {

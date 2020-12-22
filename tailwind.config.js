@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
 	purge: [
 		'./_site/**/*.html'
@@ -21,7 +23,7 @@ module.exports = {
 		},
 		extend: {
 			colors: {
-				primary: "#dc3545"
+				primary: colors.rose[600]
 			},
 			spacing: {
 				"128": "32rem",
@@ -36,8 +38,7 @@ module.exports = {
 				DEFAULT: {
 					css: {
 						color: theme("colors.gray.700"),
-						'[class~="lead"]': { color: theme("colors.gray.700") },
-						a: { color: "#dc3545", "text-decoration": "none" },
+						a: { color: colors.rose[600], "text-decoration": "none" },
 						strong: { color: theme("colors.gray.700") },
 						h1: { color: theme("colors.gray.700") },
 						h2: { color: theme("colors.gray.700") },
@@ -45,14 +46,24 @@ module.exports = {
 						h4: { color: theme("colors.gray.700") },
 						h5: { color: theme("colors.gray.700") },
 						h6: { color: theme("colors.gray.700") },
-						code: { color: theme("colors.gray.700") },
+						code: {
+							color: theme("colors.gray.700"),
+							background: colors.blueGray[100],
+							'font-family': 'Fira Code, monospace',
+							'font-weight': 300
+						},
+						'code::before': {
+							content: 'none',
+						},
+						'code::after': {
+							content: 'none',
+						},
 					}
 				}, 
 
 				dark: {
 					css: {
 						color: theme("colors.gray.400"),
-						'[class~="lead"]': { color: theme("colors.gray.400") },
 						strong: { color: theme("colors.gray.400") },
 						h1: { color: theme("colors.gray.400") },
 						h2: { color: theme("colors.gray.400") },
@@ -60,7 +71,7 @@ module.exports = {
 						h4: { color: theme("colors.gray.400") },
 						h5: { color: theme("colors.gray.400") },
 						h6: { color: theme("colors.gray.400") },
-						code: { color: theme("colors.gray.400") },
+						code: { color: theme("colors.gray.400"), background: colors.warmGray[900] },
 					}
 				}
 			})

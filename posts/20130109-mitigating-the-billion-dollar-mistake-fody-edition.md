@@ -4,10 +4,10 @@ slug: "mitigating-the-billion-dollar-mistake-fody-edition"
 date: 2013-01-09
 unsplash_id: ScEKf8u7y-c
 tags: ["fody", "aop"]
-excerpt: "Phil Haack recently wrote a post in which he talked about protecting <abbr>C#</abbr> code from null references by automatically adding guard code. Phil's implementation used PostSharp for the post compile injection. Instead I wanted to use Fody."
+excerpt: "Phil Haack recently wrote a post in which he talked about protecting C# code from null references by automatically adding guard code. Phil's implementation used PostSharp for the post compile injection. Instead I wanted to use Fody."
 ---
 
-<a href="http://haacked.com/articles/AboutHaacked.aspx">Phil Haack</a> recently wrote a <a href="http://haacked.com/archive/2013/01/05/mitigate-the-billion-dollar-mistake-with-aspects.aspx">post</a> in which he talked about protecting <abbr>C#</abbr> code from null references by automatically adding guard code. Phil's implementation used PostSharp for the post compile injection. Instead I wanted to use Fody.
+[Phil Haack](http://haacked.com/articles/AboutHaacked.aspx) recently wrote a [post](http://haacked.com/archive/2013/01/05/mitigate-the-billion-dollar-mistake-with-aspects.aspx) in which he talked about protecting `C#` code from null references by automatically adding guard code. Phil's implementation used PostSharp for the post compile injection. Instead I wanted to use Fody.
 
 ### Fody vs PostSharp
 
