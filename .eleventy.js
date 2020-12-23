@@ -161,10 +161,7 @@ function unsplash(liquidEngine) {
 			});
 			dataSizes.push('600px');
 
-			return `<figure><img class="lazyload" data-src="${dataSrc}" data-sizes="${dataSizes.join(', ')}" data-srcset="${dataSrcSets.join(', ')}" src="${data.base64}" alt="${data.alt_description}" style="background-color:${data.color}" />
-<figcaption class="unsplash__credit"><p>Photo by <a href="${data.user.html}?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">${data.user.name}</a></p></figcaption>
-<div class="jg-caption">📷 ${data.user.name}</div>
-</figure>`;
+			return `<figure><img class="blurhash lazyload" data-blurhash="${data.blur_hash}" data-bhwidth="${data.width}" data-bhheight="${data.height}" data-src="${dataSrc}" data-sizes="${dataSizes.join(', ')}" data-srcset="${dataSrcSets.join(', ')}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="${data.alt_description}" style="background-color:${data.color}" /><figcaption class="unsplash__credit"><p>Photo by <a href="${data.user.html}?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">${data.user.name}</a></p></figcaption><div class="jg-caption">📷 ${data.user.name}</div></figure>`;
 		}
 	};
 }
@@ -174,21 +171,6 @@ function createUnsplashClient() {
 		accessKey: process.env.UNSPLASH_APP_ID,
 		secret: process.env.UNSPLASH_SECRET,
 		fetch: nodeFetch
-	});
-}
-
-async function getBase64ImageFromUrl(imageUrl) {
-	return new Promise((resolve, reject) => {
-		https.get(imageUrl, (resp) => {
-			resp.setEncoding('base64');
-			let body = "data:" + resp.headers["content-type"] + ";base64,";
-			resp.on('data', (data) => { body += data });
-			resp.on('end', () => {
-				resolve(body);
-			});
-		}).on('error', (e) => {
-			reject(e);
-		});
 	});
 }
 
@@ -202,9 +184,7 @@ async function getPhotoData(unsplash, id) {
 	}
 	const json = result.response;
 
-	const b64 = await getBase64ImageFromUrl(`${json.urls.raw}&fit=max&w=100&fm=jpg&q=10`);
-
-	return { ...json, base64: b64 };
+	return json;
 }
 
 function page(array, n, p) {

@@ -6,29 +6,38 @@
 			{% if post.data.post_unsplash.error %}
 				<p class="flex items-center justify-center w-full h-full text-4xl">{{ post.data.post_unsplash.error }}</p>
 			{% else %}
-				<img class="absolute inset-0 block object-cover w-full h-full lazyload"
+				<img class="absolute inset-0 block object-cover w-full h-full blurhash lazyload"
+					data-blurhash="{{ post.data.post_unsplash.blur_hash}}"
+					data-bhwidth="{{ post.data.post_unsplash.width }}"
+					data-bhheight="{{ post.data.post_unsplash.height }}"
 					data-src="{{ post.data.post_unsplash.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w=1024&fit=max"
 					data-sizes="{% for size in [30, 100, 300, 600, 1000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
 					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000] %}{{ comma() }}{{ post.data.post_unsplash.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w={{ size }}&fit=max {{ size }}w{% endfor %}"
-					src="{{ post.data.post_unsplash.base64 }}"
+					src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 					alt="{{ post.data.post_unsplash.alt_description }}"
 					style="background-color:{{ post.data.post_unsplash.color }}"
 					/>
 			{% endif %}
 			{% else %}
-				<img class="absolute inset-0 block object-cover w-full h-full lazyload theme-light"
+				<img class="absolute inset-0 block object-cover w-full h-full blurhash lazyload theme-light"
+					data-blurhash="{{ unsplash.default.blur_hash}}"
+					data-bhwidth="{{ unsplash.default.width }}"
+					data-bhheight="{{ unsplash.default.height }}"
 					data-src="{{ unsplash.default.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w=1024&fit=max"
 					data-sizes="{% for size in [30, 100, 300, 600, 1000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
 					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000] %}{{ comma() }}{{ unsplash.default.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w={{ size }}&fit=max {{ size }}w{% endfor %}"
-					src="{{ unsplash.default.base64 }}"
+					src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 					alt="{{ unsplash.default.alt_description }}"
 					style="background-color:{{ unsplash.default.color }}"
 					/>
-				<img class="absolute inset-0 block object-cover w-full h-full lazyload theme-dark"
+				<img class="absolute inset-0 block object-cover w-full h-full blurhash lazyload theme-dark"
+					data-blurhash="{{ unsplash.default_dark.blur_hash}}"
+					data-bhwidth="{{ unsplash.default_dark.width }}"
+					data-bhheight="{{ unsplash.default_dark.height }}"
 					data-src="{{ unsplash.default_dark.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w=1024&fit=max"
 					data-sizes="{% for size in [30, 100, 300, 600, 1000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
 					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000] %}{{ comma() }}{{ unsplash.default_dark.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w={{ size }}&fit=max {{ size }}w{% endfor %}"
-					src="{{ unsplash.default_dark.base64 }}"
+					src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 					alt="{{ unsplash.default_dark.alt_description }}"
 					style="background-color:{{ unsplash.default_dark.color }}"
 					/>

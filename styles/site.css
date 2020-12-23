@@ -91,12 +91,10 @@ a.inverted:hover {
 	}
 }
 
-.lazyload,
-.lazyloading {
-	filter: blur(8px);
+.jg-caption {
+	display: hidden;
 }
 
-.lazyloaded {
-	filter: none;
-	transition: 300ms filter linear;
+.lazyload {
+	object-fit: fill;
 }

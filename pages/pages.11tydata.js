@@ -20,21 +20,6 @@ function createUnsplashClient() {
 	});
 }
 
-async function getBase64ImageFromUrl(imageUrl) {
-	return new Promise((resolve, reject) => {
-		https.get(imageUrl, (resp) => {
-			resp.setEncoding('base64');
-			let body = "data:" + resp.headers["content-type"] + ";base64,";
-			resp.on('data', (data) => { body += data });
-			resp.on('end', () => {
-				resolve(body);
-			});
-		}).on('error', (e) => {
-			reject(e);
-		});
-	});
-}
-
 async function getPhotoData(unsplash, id) {
 	if (!id) {
 		return {};
@@ -45,7 +30,5 @@ async function getPhotoData(unsplash, id) {
 	}
 	const json = result.response;
 
-	const b64 = await getBase64ImageFromUrl(`${json.urls.raw}&fit=max&w=100&fm=jpg&q=10`);
-
-	return { ...json, base64: b64 };
+	return json;
 }
