@@ -1,7 +1,7 @@
 require('dotenv').config();
 const nodeFetch = require('node-fetch');
-const https = require('https');
 const { createApi } = require('unsplash-js');
+
 const metadata = require("./metadata.json");
 
 function createUnsplashClient() {

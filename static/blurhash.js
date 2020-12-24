@@ -231,30 +231,27 @@ const decode = (
 
 var imgElements = document.getElementsByClassName("blurhash");
 
-for (let i = 0; i < imgElements.length; i++) {
-    const img = imgElements[i];
-		const blurhash = img.dataset.blurhash;
-    if (!blurhash) continue;
-
-		const width = 100;
-		const height = Math.ceil(width / img.dataset.bhwidth * img.dataset.bhheight);
-
-    const pixels = decode(blurhash, width, height);
-
-		const canvas = document.createElement("canvas");
-		canvas.width = width;
-		canvas.height = height;
-    const ctx = canvas.getContext("2d");
-    const imageData = ctx.createImageData(width, height);
-    imageData.data.set(pixels);
-    ctx.putImageData(imageData, 0, 0);
-
-		img.src = canvas.toDataURL('image/jpeg', 1.0);
-		
-		delete canvas;
-}
-
 while (imgElements.length > 0) {
+	const img = imgElements[0];
+	const blurhash = img.dataset.blurhash;
+	if (!blurhash) continue;
+
+	const width = 100;
+	const height = Math.ceil(width / img.dataset.bhwidth * img.dataset.bhheight);
+
+	const pixels = decode(blurhash, width, height);
+
+	const canvas = document.createElement("canvas");
+	canvas.width = width;
+	canvas.height = height;
+	const ctx = canvas.getContext("2d");
+	const imageData = ctx.createImageData(width, height);
+	imageData.data.set(pixels);
+	ctx.putImageData(imageData, 0, 0);
+
+	img.src = canvas.toDataURL('image/jpeg', 1.0);
+	
+	delete canvas;
 	imgElements[0].classList.remove("blurhash");
 }
 

@@ -1,6 +1,5 @@
 require('dotenv').config();
 const nodeFetch = require('node-fetch');
-const https = require('https');
 const { createApi } = require('unsplash-js');
 
 module.exports = {
