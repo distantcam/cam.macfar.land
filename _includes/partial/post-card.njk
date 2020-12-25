@@ -8,8 +8,8 @@
 			{% else %}
 				<img class="absolute inset-0 block object-cover w-full h-full blurhash lazyload"
 					data-blurhash="{{ post.data.post_unsplash.blur_hash}}"
-					data-bhwidth="{{ post.data.post_unsplash.width }}"
-					data-bhheight="{{ post.data.post_unsplash.height }}"
+					
+					
 					data-src="{{ post.data.post_unsplash.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w=1024&fit=max"
 					data-sizes="{% for size in [30, 100, 300, 600, 1000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
 					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000] %}{{ comma() }}{{ post.data.post_unsplash.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w={{ size }}&fit=max {{ size }}w{% endfor %}"
@@ -21,8 +21,8 @@
 			{% else %}
 				<img class="absolute inset-0 block object-cover w-full h-full blurhash lazyload theme-light"
 					data-blurhash="{{ unsplash.default.blur_hash}}"
-					data-bhwidth="{{ unsplash.default.width }}"
-					data-bhheight="{{ unsplash.default.height }}"
+					
+					
 					data-src="{{ unsplash.default.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w=1024&fit=max"
 					data-sizes="{% for size in [30, 100, 300, 600, 1000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
 					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000] %}{{ comma() }}{{ unsplash.default.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w={{ size }}&fit=max {{ size }}w{% endfor %}"
@@ -32,8 +32,8 @@
 					/>
 				<img class="absolute inset-0 block object-cover w-full h-full blurhash lazyload theme-dark"
 					data-blurhash="{{ unsplash.default_dark.blur_hash}}"
-					data-bhwidth="{{ unsplash.default_dark.width }}"
-					data-bhheight="{{ unsplash.default_dark.height }}"
+					
+					
 					data-src="{{ unsplash.default_dark.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w=1024&fit=max"
 					data-sizes="{% for size in [30, 100, 300, 600, 1000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
 					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000] %}{{ comma() }}{{ unsplash.default_dark.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w={{ size }}&fit=max {{ size }}w{% endfor %}"

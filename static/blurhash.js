@@ -237,7 +237,7 @@ while (imgElements.length > 0) {
 	if (!blurhash) continue;
 
 	const width = 100;
-	const height = Math.ceil(width / img.dataset.bhwidth * img.dataset.bhheight);
+	const height = 100;
 
 	const pixels = decode(blurhash, width, height);
 
