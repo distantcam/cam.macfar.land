@@ -26,7 +26,6 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(syntaxHighlight);
 	eleventyConfig.addPlugin(pluginRss);
 
-	eleventyConfig.addPassthroughCopy({ "_tmp/*.css": "." });
 	eleventyConfig.addPassthroughCopy({ static: "." });
 
 	eleventyConfig.addShortcode("currentyear", () => new Date().getFullYear().toString());

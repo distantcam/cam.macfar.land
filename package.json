@@ -3,11 +3,11 @@
 	"scripts": {
 		"start": "run-p start:*",
 		"start:eleventy": "eleventy --serve",
-		"start:postcss": "postcss styles/*.css --dir _tmp --watch",
+		"start:postcss": "postcss styles/*.css --dir _site --watch",
 		"build": "run-s build:eleventy build:postcss",
 		"build:eleventy": "cross-env ELEVENTY_PRODUCTION=true eleventy",
-		"build:postcss": "cross-env NODE_ENV=production postcss styles/*.css --dir _site/",
-		"clean": "rimraf _site _tmp"
+		"build:postcss": "cross-env NODE_ENV=production postcss styles/*.css --dir _site",
+		"clean": "rimraf _site"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^0.11.1",
