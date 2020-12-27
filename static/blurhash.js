@@ -251,7 +251,6 @@ while (imgElements.length > 0) {
 
 	img.src = canvas.toDataURL('image/jpeg', 1.0);
 	
-	delete canvas;
 	imgElements[0].classList.remove("blurhash");
 }
 

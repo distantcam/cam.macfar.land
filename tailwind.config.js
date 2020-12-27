@@ -2,7 +2,6 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
 	purge: {
-		enabled: true,
 		content: [
 			'./_includes/**/*.njk',
 			'./index.njk'
