@@ -28,12 +28,12 @@ pagination:
 
   <nav aria-labelledby="pagination" class="flex justify-between px-5 m-auto md:max-w-7xl">
     {% if pagination.href.previous %}
-    <a href="{{ pagination.href.previous }}"><i class="p-3 text-lg font-bold text-gray-100 material-icons bg-primary">arrow_back_ios</i></a>
+    <a href="{{ pagination.href.previous }}"><i class="p-3 text-2xl font-bold text-gray-100 material-icons bg-primary">chevron_left</i></a>
     {% else %}
     <div aria-hidden="true"></div>
     {% endif %}
     {% if pagination.href.next %}
-    <a href="{{ pagination.href.next }}"><i class="p-3 text-lg font-bold text-gray-100 material-icons bg-primary">arrow_forward_ios</i></a>
+    <a href="{{ pagination.href.next }}"><i class="p-3 text-2xl font-bold text-gray-100 material-icons bg-primary">chevron_right</i></a>
     {% endif %}
-  </nav>	
+  </nav>
 </main>

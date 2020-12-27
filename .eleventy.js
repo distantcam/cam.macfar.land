@@ -1,6 +1,5 @@
 require('dotenv').config();
 const nodeFetch = require('node-fetch');
-const https = require('https');
 const { createApi } = require('unsplash-js');
 const simpleIcons = require("simple-icons");
 const { DateTime } = require("luxon");
@@ -9,6 +8,7 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const striptags = require("striptags");
 const fs = require("fs");
 const htmlmin = require("html-minifier");
+const metadata = require("./_data/metadata.json");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.setUseGitIgnore(false);
@@ -150,17 +150,16 @@ function unsplash(liquidEngine) {
 
 			const utmSource = scope.contexts[0].metadata.unsplash.utm_source;
 
-			var dataSrc = `${data.urls.raw}&fm=webp&q=80&crop=entropy&w=1024&fit=max`;
+			var dataSrc = `${data.urls.raw}${metadata.unsplash.common_query}&w=1024`;
 			var dataSizes = [];
 			var dataSrcSets = [];
-			var sizes = [30, 100, 300, 600, 1000, 2000];
-			sizes.forEach(size => {
+			metadata.unsplash.sizes.forEach(size => {
 				dataSizes.push(`(max-width: ${size}px) ${size}px`);
-				dataSrcSets.push(`${data.urls.raw}&fm=webp&q=80&crop=entropy&w=${size}&fit=max ${size}w`);
+				dataSrcSets.push(`${data.urls.raw}${metadata.unsplash.common_query}&w=${size} ${size}w`);
 			});
 			dataSizes.push('600px');
 
-			return `<figure><img class="blurhash lazyload" data-blurhash="${data.blur_hash}"   data-src="${dataSrc}" data-sizes="${dataSizes.join(', ')}" data-srcset="${dataSrcSets.join(', ')}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="${data.alt_description}" style="background-color:${data.color}" /><figcaption class="unsplash__credit"><p>Photo by <a href="${data.user.html}?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">${data.user.name}</a></p></figcaption><div class="jg-caption">📷 ${data.user.name}</div></figure>`;
+			return `<figure><img class="blurhash lazyload" data-blurhash="${data.blur_hash}" data-src="${dataSrc}" data-sizes="${dataSizes.join(', ')}" data-srcset="${dataSrcSets.join(', ')}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="${data.alt_description}" style="background-color:${data.color}" /><figcaption class="unsplash__credit"><p>Photo by <a href="${data.user.html}?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">${data.user.name}</a></p></figcaption><div class="jg-caption">📷 ${data.user.name}</div></figure>`;
 		}
 	};
 }

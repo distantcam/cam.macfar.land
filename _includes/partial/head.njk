@@ -30,7 +30,7 @@
 	<meta property="og:url" content="{{ absolutePostUrl }}">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="{{ title or metadata.title }}">
-	<meta property="og:image" content="{{ (post_unsplash.urls.raw or unsplash.default.urls.raw) | safe }}&fm=webp&q=80">
+	<meta property="og:image" content="{{ (post_unsplash.urls.raw or unsplash.default.urls.regular) | safe }}">
 	<meta property="og:image:alt" content="{{ post_unsplash.alt_description or unsplash.default.alt_description }}">
 	<meta property="og:image:width" content="{{ post_unsplash.width or unsplash.default.width }}">
 	<meta property="og:image:height" content="{{ post_unsplash.height or unsplash.default.height }}">
@@ -45,7 +45,7 @@
 	<meta name="twitter:url" content="{{ absolutePostUrl }}">
 	<meta name="twitter:title" content="{{ title or metadata.title }}">
 	<meta name="twitter:description" content="{{ excerpt or (page.excerpt | striptags) or metadata.description }}">
-	<meta name="twitter:image" content="{{ (post_unsplash.urls.raw or unsplash.default.urls.raw) | safe }}&fm=webp&q=80&crop=entropy&w=4096&fit=max">
+	<meta name="twitter:image" content="{{ (post_unsplash.urls.raw or unsplash.default.urls.raw) | safe }}{{ metadata.unsplash.common_query | safe }}&w=4096">
 	<meta name="twitter:image:alt" content="{{ post_unsplash.alt_description or unsplash.default.alt_description }}">
 
 	<title>{{ title or metadata.title }}</title>

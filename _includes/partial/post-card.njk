@@ -10,9 +10,9 @@
 					data-blurhash="{{ post.data.post_unsplash.blur_hash}}"
 					
 					
-					data-src="{{ post.data.post_unsplash.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w=1024&fit=max"
-					data-sizes="{% for size in [30, 100, 300, 600, 1000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
-					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000] %}{{ comma() }}{{ post.data.post_unsplash.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w={{ size }}&fit=max {{ size }}w{% endfor %}"
+					data-src="{{ post.data.post_unsplash.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w=1024"
+					data-sizes="{% for size in metadata.unsplash.sizes %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+					data-srcset="{% set comma = joiner(", ") %}{% for size in metadata.unsplash.sizes %}{{ comma() }}{{ post.data.post_unsplash.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w={{ size }} {{ size }}w{% endfor %}"
 					src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 					alt="{{ post.data.post_unsplash.alt_description }}"
 					style="background-color:{{ post.data.post_unsplash.color }}"
@@ -23,9 +23,9 @@
 					data-blurhash="{{ unsplash.default.blur_hash}}"
 					
 					
-					data-src="{{ unsplash.default.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w=1024&fit=max"
-					data-sizes="{% for size in [30, 100, 300, 600, 1000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
-					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000] %}{{ comma() }}{{ unsplash.default.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w={{ size }}&fit=max {{ size }}w{% endfor %}"
+					data-src="{{ unsplash.default.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w=1024"
+					data-sizes="{% for size in metadata.unsplash.sizes %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+					data-srcset="{% set comma = joiner(", ") %}{% for size in metadata.unsplash.sizes %}{{ comma() }}{{ unsplash.default.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w={{ size }} {{ size }}w{% endfor %}"
 					src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 					alt="{{ unsplash.default.alt_description }}"
 					style="background-color:{{ unsplash.default.color }}"
@@ -34,9 +34,9 @@
 					data-blurhash="{{ unsplash.default_dark.blur_hash}}"
 					
 					
-					data-src="{{ unsplash.default_dark.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w=1024&fit=max"
-					data-sizes="{% for size in [30, 100, 300, 600, 1000] %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
-					data-srcset="{% set comma = joiner(", ") %}{% for size in [30, 100, 300, 600, 1000] %}{{ comma() }}{{ unsplash.default_dark.urls.raw | safe}}&fm=webp&q=80&crop=entropy&w={{ size }}&fit=max {{ size }}w{% endfor %}"
+					data-src="{{ unsplash.default_dark.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w=1024"
+					data-sizes="{% for size in metadata.unsplash.sizes %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+					data-srcset="{% set comma = joiner(", ") %}{% for size in metadata.unsplash.sizes %}{{ comma() }}{{ unsplash.default_dark.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w={{ size }} {{ size }}w{% endfor %}"
 					src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 					alt="{{ unsplash.default_dark.alt_description }}"
 					style="background-color:{{ unsplash.default_dark.color }}"

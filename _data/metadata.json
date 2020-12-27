@@ -18,6 +18,8 @@
 	"unsplash": {
 		"default_id": "VieM9BdZKFo",
 		"default_dark_id": "0gkw_9fy0eQ",
-		"utm_source": "cam.macfar.land"
+    "utm_source": "cam.macfar.land",
+    "common_query": "&fm=webp&q=80&crop=entropy&fit=max",
+    "sizes": [ "30", "100", "300", "600", "1000", "2000"]
 	}
 }

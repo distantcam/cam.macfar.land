@@ -3,19 +3,19 @@ permalink: masthead.css
 ---
 
 :root {
-	--unsplash-url-sm: url("{{ unsplash.default.urls.raw | safe }}&fm=webp&q=80&crop=entropy&w=640&fit=max");
-	--unsplash-url-md: url("{{ unsplash.default.urls.raw | safe }}&fm=webp&q=80&crop=entropy&w=768&fit=max");
-	--unsplash-url-lg: url("{{ unsplash.default.urls.raw | safe }}&fm=webp&q=80&crop=entropy&w=1024&fit=max");
-	--unsplash-url-xl: url("{{ unsplash.default.urls.raw | safe }}&fm=webp&q=80&crop=entropy&w=1280&fit=max");
-	--unsplash-url-2xl: url("{{ unsplash.default.urls.raw | safe }}&fm=webp&q=80&crop=entropy&w=2560&fit=max");
+	--unsplash-url-sm: url("{{ unsplash.default.urls.raw | safe }}{{ metadata.unsplash.common_query | safe }}&w=640");
+	--unsplash-url-md: url("{{ unsplash.default.urls.raw | safe }}{{ metadata.unsplash.common_query | safe }}&w=768");
+	--unsplash-url-lg: url("{{ unsplash.default.urls.raw | safe }}{{ metadata.unsplash.common_query | safe }}&w=1024");
+	--unsplash-url-xl: url("{{ unsplash.default.urls.raw | safe }}{{ metadata.unsplash.common_query | safe }}&w=1280");
+	--unsplash-url-2xl: url("{{ unsplash.default.urls.raw | safe }}{{ metadata.unsplash.common_query | safe }}&w=2560");
 }
 
 :root[class*='dark'] {
-	--unsplash-url-sm: url("{{ unsplash.default_dark.urls.raw | safe }}&fm=webp&q=80&crop=entropy&w=640&fit=max");
-	--unsplash-url-md: url("{{ unsplash.default_dark.urls.raw | safe }}&fm=webp&q=80&crop=entropy&w=768&fit=max");
-	--unsplash-url-lg: url("{{ unsplash.default_dark.urls.raw | safe }}&fm=webp&q=80&crop=entropy&w=1024&fit=max");
-	--unsplash-url-xl: url("{{ unsplash.default_dark.urls.raw | safe }}&fm=webp&q=80&crop=entropy&w=1280&fit=max");
-	--unsplash-url-2xl: url("{{ unsplash.default_dark.urls.raw | safe }}&fm=webp&q=80&crop=entropy&w=2560&fit=max");
+	--unsplash-url-sm: url("{{ unsplash.default_dark.urls.raw | safe }}{{ metadata.unsplash.common_query | safe }}&w=640");
+	--unsplash-url-md: url("{{ unsplash.default_dark.urls.raw | safe }}{{ metadata.unsplash.common_query | safe }}&w=768");
+	--unsplash-url-lg: url("{{ unsplash.default_dark.urls.raw | safe }}{{ metadata.unsplash.common_query | safe }}&w=1024");
+	--unsplash-url-xl: url("{{ unsplash.default_dark.urls.raw | safe }}{{ metadata.unsplash.common_query | safe }}&w=1280");
+	--unsplash-url-2xl: url("{{ unsplash.default_dark.urls.raw | safe }}{{ metadata.unsplash.common_query | safe }}&w=2560");
 }
 
 .masthead {
