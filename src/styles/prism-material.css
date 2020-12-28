@@ -4,301 +4,301 @@
 /* purgecss start ignore */
 
 :root {
-	--prism-color: #90a4ae;
-	--prism-background: #fafafa;
-	--prism-language: #263238;
-	--prism-language-bg: #cceae7;
-	--prism-css: #f76d47;
-	--prism-atrule: #7c4dff;
-	--prism-attr-name:#39adb5;
-	--prism-attr-value: #f6a434;
-	--prism-attribute: #f6a434;
-	--prism-boolean: #7c4dff;
-	--prism-builtin: #39adb5;
-	--prism-cdata: #39adb5;
-	--prism-char: #39adb5;
-	--prism-class: #39adb5;
-	--prism-class-name: #6182b8;
-	--prism-comment: #aabfc9;
-	--prism-constant: #7c4dff;
-	--prism-deleted: #e53935;
-	--prism-doctype: #aabfc9;
-	--prism-entity: #e53935;
-	--prism-function: #7c4dff;
-	--prism-hexcode: #f76d47;
-	--prism-id: #7c4dff;
-	--prism-important: #7c4dff;
-	--prism-inserted: #39adb5;
-	--prism-keyword: #7c4dff;
-	--prism-number: #f76d47;
-	--prism-operator: #39adb5;
-	--prism-prolog: #aabfc9;
-	--prism-property: #39adb5;
-	--prism-pseudo-class: #f6a434;
-	--prism-pseudo-element: #f6a434;
-	--prism-punctuation: #39adb5;
-	--prism-regex: #6182b8;
-	--prism-selector: #e53935;
-	--prism-string: #f6a434;
-	--prism-symbol: #7c4dff;
-	--prism-tag: #e53935;
-	--prism-unit: #f76d47;
-	--prism-url: #e53935;
-	--prism-variable: #e53935;
+  --prism-color: #90a4ae;
+  --prism-background: #fafafa;
+  --prism-language: #263238;
+  --prism-language-bg: #cceae7;
+  --prism-css: #f76d47;
+  --prism-atrule: #7c4dff;
+  --prism-attr-name:#39adb5;
+  --prism-attr-value: #f6a434;
+  --prism-attribute: #f6a434;
+  --prism-boolean: #7c4dff;
+  --prism-builtin: #39adb5;
+  --prism-cdata: #39adb5;
+  --prism-char: #39adb5;
+  --prism-class: #39adb5;
+  --prism-class-name: #6182b8;
+  --prism-comment: #aabfc9;
+  --prism-constant: #7c4dff;
+  --prism-deleted: #e53935;
+  --prism-doctype: #aabfc9;
+  --prism-entity: #e53935;
+  --prism-function: #7c4dff;
+  --prism-hexcode: #f76d47;
+  --prism-id: #7c4dff;
+  --prism-important: #7c4dff;
+  --prism-inserted: #39adb5;
+  --prism-keyword: #7c4dff;
+  --prism-number: #f76d47;
+  --prism-operator: #39adb5;
+  --prism-prolog: #aabfc9;
+  --prism-property: #39adb5;
+  --prism-pseudo-class: #f6a434;
+  --prism-pseudo-element: #f6a434;
+  --prism-punctuation: #39adb5;
+  --prism-regex: #6182b8;
+  --prism-selector: #e53935;
+  --prism-string: #f6a434;
+  --prism-symbol: #7c4dff;
+  --prism-tag: #e53935;
+  --prism-unit: #f76d47;
+  --prism-url: #e53935;
+  --prism-variable: #e53935;
 }
 
 :root[class*='dark'] {
-	--prism-color: #eee;
-	--prism-background: #2f2f2f;
-	--prism-language: #eee;
-	--prism-language-bg: #363636;
-	--prism-css: #fd9170;
-	--prism-atrule: #c792ea;
-	--prism-attr-name: #ffcb6b;
-	--prism-attr-value: #a5e844;
-	--prism-attribute: #a5e844;
-	--prism-boolean: #c792ea;
-	--prism-builtin: #ffcb6b;
-	--prism-cdata: #80cbc4;
-	--prism-char: #80cbc4;
-	--prism-class: #ffcb6b;
-	--prism-class-name: #f2ff00;
-	--prism-comment: #616161;
-	--prism-constant: #c792ea;
-	--prism-deleted: #ff6666;
-	--prism-doctype: #616161;
-	--prism-entity: #ff6666;
-	--prism-function: #c792ea;
-	--prism-hexcode: #f2ff00;
-	--prism-id: #c792ea;
-	--prism-important: #c792ea;
-	--prism-inserted: #80cbc4;
-	--prism-keyword: #c792ea;
-	--prism-number: #fd9170;
-	--prism-operator: #89ddff;
-	--prism-prolog: #616161;
-	--prism-property: #80cbc4;
-	--prism-pseudo-class: #a5e844;
-	--prism-pseudo-element: #a5e844;
-	--prism-punctuation: #89ddff;
-	--prism-regex: #f2ff00;
-	--prism-selector: #ff6666;
-	--prism-string: #a5e844;
-	--prism-symbol: #c792ea;
-	--prism-tag: #ff6666;
-	--prism-unit: #fd9170;
-	--prism-url: #ff6666;
-	--prism-variable: #ff6666;
+  --prism-color: #eee;
+  --prism-background: #2f2f2f;
+  --prism-language: #eee;
+  --prism-language-bg: #363636;
+  --prism-css: #fd9170;
+  --prism-atrule: #c792ea;
+  --prism-attr-name: #ffcb6b;
+  --prism-attr-value: #a5e844;
+  --prism-attribute: #a5e844;
+  --prism-boolean: #c792ea;
+  --prism-builtin: #ffcb6b;
+  --prism-cdata: #80cbc4;
+  --prism-char: #80cbc4;
+  --prism-class: #ffcb6b;
+  --prism-class-name: #f2ff00;
+  --prism-comment: #616161;
+  --prism-constant: #c792ea;
+  --prism-deleted: #ff6666;
+  --prism-doctype: #616161;
+  --prism-entity: #ff6666;
+  --prism-function: #c792ea;
+  --prism-hexcode: #f2ff00;
+  --prism-id: #c792ea;
+  --prism-important: #c792ea;
+  --prism-inserted: #80cbc4;
+  --prism-keyword: #c792ea;
+  --prism-number: #fd9170;
+  --prism-operator: #89ddff;
+  --prism-prolog: #616161;
+  --prism-property: #80cbc4;
+  --prism-pseudo-class: #a5e844;
+  --prism-pseudo-element: #a5e844;
+  --prism-punctuation: #89ddff;
+  --prism-regex: #f2ff00;
+  --prism-selector: #ff6666;
+  --prism-string: #a5e844;
+  --prism-symbol: #c792ea;
+  --prism-tag: #ff6666;
+  --prism-unit: #fd9170;
+  --prism-url: #ff6666;
+  --prism-variable: #ff6666;
 }
 
 code[class*="language-"],
 pre[class*="language-"] {
-	font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
-	text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
-	text-align: left;
-	white-space: pre-wrap;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	color: var(--prism-color);
-	background: var(--prism-background);
-	font-family: Fira Code, monospace;
-	font-size: 14px;
-	line-height: 1.3em;
+  font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
+  text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
+  text-align: left;
+  white-space: pre-wrap;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  color: var(--prism-color);
+  background: var(--prism-background);
+  font-family: Fira Code, monospace;
+  font-size: 14px;
+  line-height: 1.3em;
 
-	-moz-tab-size: 2;
-	-o-tab-size: 2;
-	tab-size: 2;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
 
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 
 code[class*="language-"]::-moz-selection,
 pre[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection,
 pre[class*="language-"] ::-moz-selection {
-	background: var(--prism-language);
-	color: var(--prism-language-bg);
+  background: var(--prism-language);
+  color: var(--prism-language-bg);
 }
 
 code[class*="language-"]::selection,
 pre[class*="language-"]::selection,
 code[class*="language-"] ::selection,
 pre[class*="language-"] ::selection {
-	background: var(--prism-language);
-	color: var(--prism-language-bg);
+  background: var(--prism-language);
+  color: var(--prism-language-bg);
 }
 
 :not(pre) > code[class*="language-"] {
-	white-space: normal;
-	border-radius: 0.2em;
-	padding: 0.1em;
+  white-space: normal;
+  border-radius: 0.2em;
+  padding: 0.1em;
 }
 
 pre[class*="language-"] {
-	overflow: auto;
-	position: relative;
-	margin: 0.5em 0;
-	padding: 1.25em 1em;
+  overflow: auto;
+  position: relative;
+  margin: 0.5em 0;
+  padding: 1.25em 1em;
 }
 
 .language-css > code,
 .language-sass > code,
 .language-scss > code {
-	color: var(--prism-css);
+  color: var(--prism-css);
 }
 
 [class*="language-"] .namespace {
-	opacity: 0.7;
+  opacity: 0.7;
 }
 
 .token.atrule {
-	color: var(--prism-atrule);
+  color: var(--prism-atrule);
 }
 
 .token.attr-name {
-	color: var(--prism-attr-name);
+  color: var(--prism-attr-name);
 }
 
 .token.attr-value {
-	color: var(--prism-attr-value);
+  color: var(--prism-attr-value);
 }
 
 .token.attribute {
-	color: var(--prism-attribute);
+  color: var(--prism-attribute);
 }
 
 .token.boolean {
-	color: var(--prism-boolean);
+  color: var(--prism-boolean);
 }
 
 .token.builtin {
-	color: var(--prism-builtin);
+  color: var(--prism-builtin);
 }
 
 .token.cdata {
-	color: var(--prism-cdata);
+  color: var(--prism-cdata);
 }
 
 .token.char {
-	color: var(--prism-char);
+  color: var(--prism-char);
 }
 
 .token.class {
-	color: var(--prism-class);
+  color: var(--prism-class);
 }
 
 .token.class-name {
-	color: var(--prism-class-name);
+  color: var(--prism-class-name);
 }
 
 .token.comment {
-	color: var(--prism-comment);
+  color: var(--prism-comment);
 }
 
 .token.constant {
-	color: var(--prism-constant);
+  color: var(--prism-constant);
 }
 
 .token.deleted {
-	color: var(--prism-deleted);
+  color: var(--prism-deleted);
 }
 
 .token.doctype {
-	color: var(--prism-doctype);
+  color: var(--prism-doctype);
 }
 
 .token.entity {
-	color: var(--prism-entity);
+  color: var(--prism-entity);
 }
 
 .token.function {
-	color: var(--prism-function);
+  color: var(--prism-function);
 }
 
 .token.hexcode {
-	color: var(--prism-hexcode);
+  color: var(--prism-hexcode);
 }
 
 .token.id {
-	color: var(--prism-id);
-	font-weight: bold;
+  color: var(--prism-id);
+  font-weight: bold;
 }
 
 .token.important {
-	color: var(--prism-important);
-	font-weight: bold;
+  color: var(--prism-important);
+  font-weight: bold;
 }
 
 .token.inserted {
-	color: var(--prism-inserted);
+  color: var(--prism-inserted);
 }
 
 .token.keyword {
-	color: var(--prism-keyword);
+  color: var(--prism-keyword);
 }
 
 .token.number {
-	color: var(--prism-number);
+  color: var(--prism-number);
 }
 
 .token.operator {
-	color: var(--prism-operator);
+  color: var(--prism-operator);
 }
 
 .token.prolog {
-	color: var(--prism-prolog);
+  color: var(--prism-prolog);
 }
 
 .token.property {
-	color: var(--prism-property);
+  color: var(--prism-property);
 }
 
 .token.pseudo-class {
-	color: var(--prism-pseudo-class);
+  color: var(--prism-pseudo-class);
 }
 
 .token.pseudo-element {
-	color: var(--prism-pseudo-element);
+  color: var(--prism-pseudo-element);
 }
 
 .token.punctuation {
-	color: var(--prism-punctuation);
+  color: var(--prism-punctuation);
 }
 
 .token.regex {
-	color: var(--prism-regex);
+  color: var(--prism-regex);
 }
 
 .token.selector {
-	color: var(--prism-selector);
+  color: var(--prism-selector);
 }
 
 .token.string {
-	color: var(--prism-string);
+  color: var(--prism-string);
 }
 
 .token.symbol {
-	color: var(--prism-symbol);
+  color: var(--prism-symbol);
 }
 
 .token.tag {
-	color: var(--prism-tag);
+  color: var(--prism-tag);
 }
 
 .token.unit {
-	color: var(--prism-unit);
+  color: var(--prism-unit);
 }
 
 .token.url {
-	color: var(--prism-url);
+  color: var(--prism-url);
 }
 
 .token.variable {
-	color: var(--prism-variable);
+  color: var(--prism-variable);
 }
 
 /* purgecss end ignore */

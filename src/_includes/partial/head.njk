@@ -1,51 +1,51 @@
 {% set absolutePostUrl %}{{ page.url | url | absoluteUrl(metadata.url) }}{% endset %}
 
-	<!-- https://github.com/joshbuchea/HEAD -->
-	
-	<!-- Recommended -->
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- https://github.com/joshbuchea/HEAD -->
+  
+  <!-- Recommended -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Elements -->
-	<meta charset="utf-8">
+  <!-- Elements -->
+  <meta charset="utf-8">
 
-	<!-- Meta -->
-	<meta name="description" content="{{ description or metadata.description }}" />
-	<meta name="author" content="{{ metadata.author }}" />
-	<meta name="generator" content="11ty">
+  <!-- Meta -->
+  <meta name="description" content="{{ description or metadata.description }}" />
+  <meta name="author" content="{{ metadata.author }}" />
+  <meta name="generator" content="11ty">
 
-	<!-- Link -->
-	<link rel="alternate" href="{{ metadata.feedUrl }}" type="application/rss+xml" title="RSS">
+  <!-- Link -->
+  <link rel="alternate" href="{{ metadata.feedUrl }}" type="application/rss+xml" title="RSS">
 
-	<!-- Icons -->
-	<!-- https://favicon.io/favicon-generator/?t=CM&ff=Open+Sans&fs=75&fc=%23FFFFFF&b=rounded&bc=%23dc3545 -->
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
+  <!-- Icons -->
+  <!-- https://favicon.io/favicon-generator/?t=CM&ff=Open+Sans&fs=75&fc=%23FFFFFF&b=rounded&bc=%23dc3545 -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 
-	<!-- Social -->
+  <!-- Social -->
 
-	<!-- Facebook -->
-	<meta property="og:url" content="{{ absolutePostUrl }}">
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="{{ title or metadata.title }}">
-	<meta property="og:image" content="{{ (post_unsplash.urls.raw or unsplash.default.urls.regular) | safe }}">
-	<meta property="og:image:alt" content="{{ post_unsplash.alt_description or unsplash.default.alt_description }}">
-	<meta property="og:image:width" content="{{ post_unsplash.width or unsplash.default.width }}">
-	<meta property="og:image:height" content="{{ post_unsplash.height or unsplash.default.height }}">
-	<meta property="og:description" content="{{ excerpt or (page.excerpt | striptags) or metadata.description }}">
-	<meta property="og:site_name" content="{{ metadata.title }}">
-	<meta property="og:locale" content="en_AU">
-	<meta property="article:author" content="{{ metadata.author }}">
+  <!-- Facebook -->
+  <meta property="og:url" content="{{ absolutePostUrl }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title or metadata.title }}">
+  <meta property="og:image" content="{{ (post_unsplash.urls.raw or unsplash.default.urls.regular) | safe }}">
+  <meta property="og:image:alt" content="{{ post_unsplash.alt_description or unsplash.default.alt_description }}">
+  <meta property="og:image:width" content="{{ post_unsplash.width or unsplash.default.width }}">
+  <meta property="og:image:height" content="{{ post_unsplash.height or unsplash.default.height }}">
+  <meta property="og:description" content="{{ excerpt or (page.excerpt | striptags) or metadata.description }}">
+  <meta property="og:site_name" content="{{ metadata.title }}">
+  <meta property="og:locale" content="en_AU">
+  <meta property="article:author" content="{{ metadata.author }}">
 
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:creator" content="@distantcam">
-	<meta name="twitter:url" content="{{ absolutePostUrl }}">
-	<meta name="twitter:title" content="{{ title or metadata.title }}">
-	<meta name="twitter:description" content="{{ excerpt or (page.excerpt | striptags) or metadata.description }}">
-	<meta name="twitter:image" content="{{ (post_unsplash.urls.raw or unsplash.default.urls.raw) | safe }}{{ metadata.unsplash.common_query | safe }}&w=4096">
-	<meta name="twitter:image:alt" content="{{ post_unsplash.alt_description or unsplash.default.alt_description }}">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@distantcam">
+  <meta name="twitter:url" content="{{ absolutePostUrl }}">
+  <meta name="twitter:title" content="{{ title or metadata.title }}">
+  <meta name="twitter:description" content="{{ excerpt or (page.excerpt | striptags) or metadata.description }}">
+  <meta name="twitter:image" content="{{ (post_unsplash.urls.raw or unsplash.default.urls.raw) | safe }}{{ metadata.unsplash.common_query | safe }}&w=4096">
+  <meta name="twitter:image:alt" content="{{ post_unsplash.alt_description or unsplash.default.alt_description }}">
 
-	<title>{{ title or metadata.title }}</title>
+  <title>{{ title or metadata.title }}</title>

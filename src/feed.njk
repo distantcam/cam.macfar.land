@@ -6,28 +6,28 @@
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"
-	xmlns:atom="http://www.w3.org/2005/Atom"
-	xmlns:content="http://purl.org/rss/1.0/modules/content/">
-	<channel>
-		<title>{{ metadata.title }}</title>
-		<link>{{ metadata.url }}</link>
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>{{ metadata.title }}</title>
+    <link>{{ metadata.url }}</link>
 
-		<atom:link href="{{ metadata.feedUrl}}" rel="self" type="application/rss+xml"/>
+    <atom:link href="{{ metadata.feedUrl}}" rel="self" type="application/rss+xml"/>
 
-		<description>{{ metadata.subtitle }} {{ metadata.description }}</description>
-		<pubDate>{{ collections.posts | rssLastUpdatedDate }}</pubDate>
-		
-		{%- for post in collections.posts %}
-		{% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
-		<item>
-			<title>{{ post.data.title }}</title>
-			<link>{{ absolutePostUrl }}</link>
-			<guid>{{ absolutePostUrl }}</guid>
-			<pubDate>{{ post.date | rssDate }}</pubDate>
-			
-			<content:encoded><![CDATA[{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) | safe }}]]></content:encoded>
-		</item>
-		{%- endfor %}
+    <description>{{ metadata.subtitle }} {{ metadata.description }}</description>
+    <pubDate>{{ collections.posts | rssLastUpdatedDate }}</pubDate>
+    
+    {%- for post in collections.posts %}
+    {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
+    <item>
+      <title>{{ post.data.title }}</title>
+      <link>{{ absolutePostUrl }}</link>
+      <guid>{{ absolutePostUrl }}</guid>
+      <pubDate>{{ post.date | rssDate }}</pubDate>
+      
+      <content:encoded><![CDATA[{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) | safe }}]]></content:encoded>
+    </item>
+    {%- endfor %}
 
-	</channel>
+  </channel>
 </rss>
