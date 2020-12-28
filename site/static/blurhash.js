@@ -233,11 +233,16 @@ var imgElements = document.getElementsByClassName("blurhash");
 
 while (imgElements.length > 0) {
 	const img = imgElements[0];
-	const blurhash = img.dataset.blurhash;
-	if (!blurhash) continue;
+  const blurhash = img.dataset.blurhash;
+  const dswidth = img.dataset.width;
+  const dsheight = img.dataset.height;
+	if (!blurhash || !dswidth || !dsheight) continue;
 
 	const width = 100;
-	const height = 100;
+  const height = Math.round(100 / dswidth * dsheight);
+  
+  console.log(width);
+  console.log(height);
 
 	const pixels = decode(blurhash, width, height);
 
