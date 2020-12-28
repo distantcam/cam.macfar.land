@@ -232,31 +232,28 @@ const decode = (
 var imgElements = document.getElementsByClassName("blurhash");
 
 while (imgElements.length > 0) {
-	const img = imgElements[0];
+  const img = imgElements[0];
   const blurhash = img.dataset.blurhash;
   const dswidth = img.dataset.width;
   const dsheight = img.dataset.height;
-	if (!blurhash || !dswidth || !dsheight) continue;
+  if (!blurhash || !dswidth || !dsheight) continue;
 
-	const width = 100;
+  const width = 100;
   const height = Math.round(100 / dswidth * dsheight);
+
+  const pixels = decode(blurhash, width, height);
+
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d");
+  const imageData = ctx.createImageData(width, height);
+  imageData.data.set(pixels);
+  ctx.putImageData(imageData, 0, 0);
+
+  img.src = canvas.toDataURL('image/jpeg', 1.0);
   
-  console.log(width);
-  console.log(height);
-
-	const pixels = decode(blurhash, width, height);
-
-	const canvas = document.createElement("canvas");
-	canvas.width = width;
-	canvas.height = height;
-	const ctx = canvas.getContext("2d");
-	const imageData = ctx.createImageData(width, height);
-	imageData.data.set(pixels);
-	ctx.putImageData(imageData, 0, 0);
-
-	img.src = canvas.toDataURL('image/jpeg', 1.0);
-	
-	imgElements[0].classList.remove("blurhash");
+  imgElements[0].classList.remove("blurhash");
 }
 
 lazySizes.init();
