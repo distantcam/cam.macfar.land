@@ -27,7 +27,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
 
   // Passthrough
-  eleventyConfig.addPassthroughCopy({ "site/static": "." });
+  eleventyConfig.addPassthroughCopy({ "src/static": "." });
 
   // Helpers
   eleventyConfig.addShortcode("currentyear", () => new Date().getFullYear().toString());
@@ -51,15 +51,14 @@ module.exports = function (eleventyConfig) {
   
   return {
     dir: {
-      input: "site",
-      output: "dist"
+      input: "src"
     }
   }
 };
 
 function browserSyncReady(err, bs) {
   bs.addMiddleware("*", (req, res) => {
-    const content_404 = fs.readFileSync('dist/404.html');
+    const content_404 = fs.readFileSync('_site/404.html');
     // Provides the 404 content without redirect.
     res.write(content_404);
     // Add 404 http status code in request header.

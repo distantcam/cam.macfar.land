@@ -1,6 +1,6 @@
 const nodeFetch = require('node-fetch');
 const { createApi } = require('unsplash-js');
-const metadata = require("../site/_data/metadata.json");
+const metadata = require("../src/_data/metadata.json");
 
 function createUnsplashClient() {
   return createApi({
