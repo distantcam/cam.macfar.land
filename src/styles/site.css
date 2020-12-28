@@ -8,8 +8,6 @@ html.transition *:after {
   transition-delay: 0 !important;
 }
 
-@tailwind components;
-
 a {
   @apply text-primary;
 }
@@ -25,6 +23,8 @@ a.inverted {
 a.inverted:hover {
   @apply text-primary;
 }
+
+@tailwind components;
 
 @media (min-width: 768px) {
   .post-card:nth-of-type(6n+1) {
@@ -97,4 +97,9 @@ a.inverted:hover {
 
 .lazyload {
   object-fit: fill;
+}
+
+.jg-entry {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }

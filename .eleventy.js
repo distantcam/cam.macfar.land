@@ -47,7 +47,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("striptags", (data) => striptags(data));
 
   // Watch targets
-  eleventyConfig.addWatchTarget("./site/styles/");
+  eleventyConfig.addWatchTarget("./src/styles/");
   
   return {
     dir: {
