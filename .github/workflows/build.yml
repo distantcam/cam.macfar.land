@@ -14,9 +14,3 @@ jobs:
         env:
           UNSPLASH_APP_ID: ${{ secrets.UNSPLASH_APP_ID }}
           UNSPLASH_SECRET: ${{ secrets.UNSPLASH_SECRET }}
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v1.1.0
-        env:
-          PUBLISH_DIR: dist 
-          PUBLISH_BRANCH: gh-pages
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
