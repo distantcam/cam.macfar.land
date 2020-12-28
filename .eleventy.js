@@ -9,7 +9,7 @@ const htmlmin = require("html-minifier");
 const { simpleIcon, simpleIconLQ } = require("./helpers/simpleIcon");
 const postLink = require("./helpers/postLink");
 const codePen = require("./helpers/codePen");
-const unsplash = require("./helpers/unsplash");
+const { unsplash } = require("./helpers/unsplash");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);

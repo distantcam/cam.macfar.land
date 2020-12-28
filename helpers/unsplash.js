@@ -55,4 +55,4 @@ function unsplash(liquidEngine) {
   };
 }
 
-module.exports = unsplash;
+module.exports = { createUnsplashClient, getPhotoData, unsplash };
