@@ -3,8 +3,8 @@ const colors = require('tailwindcss/colors')
 module.exports = {
 	purge: {
 		content: [
-			'./site/_includes/**/*.njk',
-			'./site/index.njk'
+			'./src/_includes/**/*.njk',
+			'./src/index.njk'
 		],
 	},
 	darkMode: 'class', // false or 'media' or 'class'
