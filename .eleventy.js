@@ -10,6 +10,7 @@ const { simpleIcon, simpleIconLQ } = require("./helpers/simpleIcon");
 const postLink = require("./helpers/postLink");
 const codePen = require("./helpers/codePen");
 const { unsplash } = require("./helpers/unsplash");
+const cssShortcode = require("./helpers/cssShortcode");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
@@ -31,6 +32,7 @@ module.exports = function (eleventyConfig) {
 
   // Helpers
   eleventyConfig.addShortcode("currentyear", () => new Date().getFullYear().toString());
+  eleventyConfig.addShortcode("css", cssShortcode);
 
   eleventyConfig.addNunjucksShortcode("simpleicon", simpleIcon);
 
