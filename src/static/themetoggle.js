@@ -44,11 +44,11 @@ function updateTheme() {
     moon.classList.add("hidden");
   } else if (mode === "light") {
     pref.classList.add("hidden");
-    sun.classList.add("hidden");
-    moon.classList.remove("hidden");
-  } else {
-    pref.classList.add("hidden");
     sun.classList.remove("hidden");
     moon.classList.add("hidden");
+  } else {
+    pref.classList.add("hidden");
+    sun.classList.add("hidden");
+    moon.classList.remove("hidden");
   }
 }
