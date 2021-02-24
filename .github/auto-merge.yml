@@ -1,0 +1,6 @@
+- match:
+    dependency_name: simple-icons
+    update_type: semver:minor
+- match:
+    dependency_type: all
+    update_type: semver:patch
