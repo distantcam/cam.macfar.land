@@ -2,7 +2,7 @@
 title: "Cool New Features of C# 6"
 slug: "cool-new-features-of-csharp-6"
 date: 2015-05-28
-unsplash_id: 466ENaLuhLY
+unsplash_id: 2EJCSULRwC8
 tags: [c#, language, roslyn]
 ---
 
