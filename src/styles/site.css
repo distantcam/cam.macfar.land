@@ -91,15 +91,25 @@ a.inverted:hover {
   }
 }
 
-.jg-caption {
-  display: hidden;
+.blurhash, .lazyload {
+  width: 100%;
 }
 
-.lazyload {
-  object-fit: fill;
+.gallery_caption {
+  display: none;
 }
 
-.jg-entry {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+.gallery {
+  & figure {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    & .full_caption {
+      display: none;
+    }
+
+    & .gallery_caption {
+      display: block;
+    }
+  }
 }

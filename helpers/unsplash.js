@@ -50,7 +50,7 @@ function unsplash(liquidEngine) {
       });
       dataSizes.push('600px');
 
-      return `<figure><img class="blurhash lazyload" data-blurhash="${data.blur_hash}" data-width="${data.width}" data-height="${data.height}" data-src="${dataSrc}" data-sizes="${dataSizes.join(', ')}" data-srcset="${dataSrcSets.join(', ')}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="${data.alt_description}" style="background-color:${data.color}" /><figcaption class="unsplash__credit"><p>Photo by <a href="${data.user.html}?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">${data.user.name}</a></p></figcaption><div class="jg-caption">📷 ${data.user.name}</div></figure>`;
+      return `<figure><img class="blurhash lazyload" data-blurhash="${data.blur_hash}" data-width="${data.width}" data-height="${data.height}" data-src="${dataSrc}" data-sizes="${dataSizes.join(', ')}" data-srcset="${dataSrcSets.join(', ')}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="${data.alt_description}" style="background-color:${data.color}" /><figcaption class="full_caption"><span>Photo by <a href="${data.user.html}?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">${data.user.name}</a></span></figcaption><span class="gallery_caption text-base">📷 ${data.user.name}</span></figure>`;
     }
   };
 }
