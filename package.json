@@ -17,7 +17,7 @@
     "autoprefixer": "^10.2.5",
     "cross-env": "^7.0.3",
     "cssnano": "^5.0.2",
-    "dotenv": "^9.0.1",
+    "dotenv": "^9.0.2",
     "html-minifier": "^4.0.0",
     "luxon": "^1.26.0",
     "node-fetch": "^2.6.1",
