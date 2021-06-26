@@ -1,7 +1,7 @@
 const simpleIcons = require("simple-icons");
 
 function simpleIcon(id) {
-  const data = simpleIcons.get(id);
+  const data = simpleIcons.Get(id);
 
   if (!data) {
     return `<p>SimpleIcon ID not found: '${id}'</p>`;
