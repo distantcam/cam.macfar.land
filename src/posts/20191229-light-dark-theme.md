@@ -9,7 +9,7 @@ Allowing users to choose either a light or dark theme when viewing your website 
 
 ---
 
-## The CSS {% simpleicon CSS3 %}
+## The CSS {% simpleicon css3 %}
 
 First off, we need to add some CSS variables to store settings for the different themes. CSS variables are a way of storing common values in CSS, and when they are changed, they change everywhere they are referenced.
 
@@ -61,7 +61,7 @@ Finally, in our CSS we can use the variables in various utility classes.
 }
 ```
 
-## The HTML {% simpleicon HTML5 %}
+## The HTML {% simpleicon html5 %}
 
 The theme toggle is an anchor tag that contains two svg images, a sun and a moon, to represent the different themes.
 
