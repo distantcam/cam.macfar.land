@@ -1,6 +1,7 @@
 ---
 unsplash_id: RESEQty1uvc
 ---
+
 Hi, I'm Cameron. I'm a software engineer, gamer, and very occasional blogger. Currently I live in Perth, Australia.
 
 ### Technologies
@@ -17,12 +18,11 @@ Here's a list of some of the technologies I use at work and on hobby projects.
 ### Hobbies
 
 <section class="gallery">
-{% unsplash 5X39cfzKX3o %}
-{% unsplash laNNTAth9vs %}
-{% unsplash 2FaCKyEEtis %}
-{% unsplash atsUqIm3wxo %}
-{% unsplash cPF2nlWcMY4 %}
-{% unsplash JIOP2qvo8yk %}
-{% unsplash XCBW03rNaNQ %}
-{% unsplash N10auyEVst8 %}
+{% unsplash 5X39cfzKX3o %} <!-- gaming -->
+{% unsplash laNNTAth9vs %} <!-- board gaming-->
+{% unsplash 2FaCKyEEtis %} <!-- lego -->
+{% unsplash TFRezw7pQwI %} <!-- movies -->
+{% unsplash EOQhsfFBhRk %} <!-- television -->
+{% unsplash cPF2nlWcMY4 %} <!-- star wars -->
+{% unsplash JIOP2qvo8yk %} <!-- marvel -->
 </section>
