@@ -25,10 +25,10 @@ async function getPhotoData(unsplash, id) {
 
 function unsplash(liquidEngine) {
   return {
-    parse: function(tagToken, remainTokens) {
+    parse: function (tagToken, remainTokens) {
       this.args = tagToken.args;
     },
-    render: async function(scope, hash) {
+    render: async function (scope, hash) {
       let isQuoted = this.args.charAt(0) === "'" || this.args.charAt(0) === '"';
       let id = isQuoted ? liquidEngine.evalValue(this.args, scope) : this.args;
 
@@ -39,7 +39,7 @@ function unsplash(liquidEngine) {
         return `<p>Unsplash error: '${data.error}' PhotoId: ${id}</p>`
       }
 
-      const utmSource = scope.contexts[0].metadata.unsplash.utm_source;
+      const utmSource = metadata.unsplash.utm_source;
 
       var dataSrc = `${data.urls.raw}${metadata.unsplash.common_query}&w=1024`;
       var dataSizes = [];
