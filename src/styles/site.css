@@ -17,7 +17,7 @@ a:hover {
 }
 
 a.inverted {
-  @apply text-gray-700 dark:text-gray-400; 
+  @apply text-gray-700 dark:text-gray-400;
 }
 
 a.inverted:hover {
@@ -27,13 +27,13 @@ a.inverted:hover {
 @tailwind components;
 
 @media (min-width: 768px) {
-  .post-card:nth-of-type(6n+1) {
+  .post-card:nth-of-type(6n + 1) {
     width: 100%;
 
     & .post-card__container {
       flex-direction: row;
     }
-  
+
     & .post-card__image {
       min-height: 24rem;
       position: relative;
@@ -44,36 +44,32 @@ a.inverted:hover {
 }
 
 @layer utilities {
-  @variants responsive {
+  @layer responsive {
     .list-item {
       display: list-item;
-    }	
+    }
   }
 
-  @variants dark {
+  @layer dark {
     .header-shadow-dark {
-      text-shadow:
-      2px 2px 10px theme("colors.gray.900"),
-      -2px 2px 10px theme("colors.gray.900"),
-      2px -2px 10px theme("colors.gray.900"),
-      -2px -2px 10px theme("colors.gray.900"),
-  
-      4px 4px 10px theme("colors.gray.900"),
-      -4px 4px 10px theme("colors.gray.900"),
-      4px -4px 10px theme("colors.gray.900"),
-      -4px -4px 10px theme("colors.gray.900");
+      text-shadow: 2px 2px 10px theme("colors.gray.900"),
+        -2px 2px 10px theme("colors.gray.900"),
+        2px -2px 10px theme("colors.gray.900"),
+        -2px -2px 10px theme("colors.gray.900"),
+        4px 4px 10px theme("colors.gray.900"),
+        -4px 4px 10px theme("colors.gray.900"),
+        4px -4px 10px theme("colors.gray.900"),
+        -4px -4px 10px theme("colors.gray.900");
     }
     .header-shadow-light {
-      text-shadow:
-      2px 2px 10px theme("colors.gray.100"),
-      -2px 2px 10px theme("colors.gray.100"),
-      2px -2px 10px theme("colors.gray.100"),
-      -2px -2px 10px theme("colors.gray.100"),
-
-      4px 4px 10px theme("colors.gray.100"),
-      -4px 4px 10px theme("colors.gray.100"),
-      4px -4px 10px theme("colors.gray.100"),
-      -4px -4px 10px theme("colors.gray.100");
+      text-shadow: 2px 2px 10px theme("colors.gray.100"),
+        -2px 2px 10px theme("colors.gray.100"),
+        2px -2px 10px theme("colors.gray.100"),
+        -2px -2px 10px theme("colors.gray.100"),
+        4px 4px 10px theme("colors.gray.100"),
+        -4px 4px 10px theme("colors.gray.100"),
+        4px -4px 10px theme("colors.gray.100"),
+        -4px -4px 10px theme("colors.gray.100");
     }
   }
 }
@@ -86,12 +82,13 @@ a.inverted:hover {
   & svg {
     height: 1.3em;
     width: 1.3em;
-    top: .16em;
+    top: 0.16em;
     position: relative;
   }
 }
 
-.blurhash, .lazyload {
+.blurhash,
+.lazyload {
   width: 100%;
 }
 
