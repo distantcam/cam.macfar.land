@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const { DateTime } = require("luxon");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
@@ -13,12 +13,12 @@ const { unsplash } = require("./helpers/unsplash");
 const cssShortcode = require("./helpers/cssShortcode");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.setDataDeepMerge(true);
-
   if (process.env.ELEVENTY_PRODUCTION) {
     eleventyConfig.addTransform("htmlmin", htmlminTransform);
   } else {
-    eleventyConfig.setBrowserSyncConfig({ callbacks: { ready: browserSyncReady }});
+    eleventyConfig.setBrowserSyncConfig({
+      callbacks: { ready: browserSyncReady },
+    });
   }
 
   eleventyConfig.setFrontMatterParsingOptions({ excerpt: true });
@@ -31,7 +31,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/static": "." });
 
   // Helpers
-  eleventyConfig.addShortcode("currentyear", () => new Date().getFullYear().toString());
+  eleventyConfig.addShortcode("currentyear", () =>
+    new Date().getFullYear().toString()
+  );
   eleventyConfig.addShortcode("css", cssShortcode);
 
   eleventyConfig.addNunjucksShortcode("simpleicon", simpleIcon);
@@ -41,26 +43,30 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addLiquidTag("codepen", codePen);
   eleventyConfig.addLiquidTag("unsplash", unsplash);
 
-  eleventyConfig.addFilter("readableDate", (dateObj) => DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy"));
+  eleventyConfig.addFilter("readableDate", (dateObj) =>
+    DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("dd LLL yyyy")
+  );
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter("htmlDate", (dateObj) => DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd'));
-  
+  eleventyConfig.addFilter("htmlDate", (dateObj) =>
+    DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd")
+  );
+
   eleventyConfig.addFilter("striptags", (data) => striptags(data));
 
   // Watch targets
   eleventyConfig.addWatchTarget("./src/styles/");
-  
+
   return {
     dir: {
-      input: "src"
-    }
-  }
+      input: "src",
+    },
+  };
 };
 
 function browserSyncReady(err, bs) {
   bs.addMiddleware("*", (req, res) => {
-    const content_404 = fs.readFileSync('_site/404.html');
+    const content_404 = fs.readFileSync("_site/404.html");
     // Provides the 404 content without redirect.
     res.write(content_404);
     // Add 404 http status code in request header.
@@ -71,11 +77,11 @@ function browserSyncReady(err, bs) {
 }
 
 function htmlminTransform(content, outputPath) {
-  if( outputPath.endsWith(".html") ) {
+  if (outputPath.endsWith(".html")) {
     let minified = htmlmin.minify(content, {
       useShortDoctype: true,
       removeComments: true,
-      collapseWhitespace: true
+      collapseWhitespace: true,
     });
     return minified;
   }
