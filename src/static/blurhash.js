@@ -5,12 +5,12 @@ class ValidationError extends Error {
     this.message = message;
   }
 }
-  
+
 const validateBlurhash = (blurhash) => {
   if (!blurhash || blurhash.length < 6) {
-      throw new ValidationError(
+    throw new ValidationError(
       "The blurhash string must be at least 6 characters"
-      );
+    );
   }
 
   const sizeFlag = decode83(blurhash[0]);
@@ -18,11 +18,11 @@ const validateBlurhash = (blurhash) => {
   const numX = (sizeFlag % 9) + 1;
 
   if (blurhash.length !== 4 + 2 * numX * numY) {
-      throw new ValidationError(
+    throw new ValidationError(
       `blurhash length mismatch: length is ${
-          blurhash.length
+        blurhash.length
       } but it should be ${4 + 2 * numX * numY}`
-      );
+    );
   }
 };
 
@@ -109,7 +109,7 @@ const digitCharacters = [
   "{",
   "|",
   "}",
-  "~"
+  "~",
 ];
 
 const decode83 = (str) => {
@@ -142,8 +142,7 @@ const linearTosRGB = (value) => {
 
 const sign = (n) => (n < 0 ? -1 : 1);
 
-const signPow = (val, exp) =>
-  sign(val) * Math.pow(Math.abs(val), exp);
+const signPow = (val, exp) => sign(val) * Math.pow(Math.abs(val), exp);
 
 const decodeDC = (value) => {
   const intR = value >> 16;
@@ -160,18 +159,13 @@ const decodeAC = (value, maximumValue) => {
   const rgb = [
     signPow((quantR - 9) / 9, 2.0) * maximumValue,
     signPow((quantG - 9) / 9, 2.0) * maximumValue,
-    signPow((quantB - 9) / 9, 2.0) * maximumValue
+    signPow((quantB - 9) / 9, 2.0) * maximumValue,
   ];
 
   return rgb;
 };
-  
-const decode = (
-  blurhash,
-  width,
-  height,
-  punch
-) => {
+
+const decode = (blurhash, width, height, punch) => {
   validateBlurhash(blurhash);
 
   punch = punch | 1;
@@ -231,30 +225,30 @@ const decode = (
 
 if (document.getElementsByClassName("gallery").length > 0) {
   var macy = Macy({
-    container: '.gallery',
+    container: ".gallery",
     columns: 2,
     mobileFirst: true,
     breakAt: {
       1280: 4,
-      768: 3
-    }
+      768: 3,
+    },
   });
-  document.addEventListener('lazyloaded', function(e) {
+  document.addEventListener("lazyloaded", function (e) {
     macy.recalculate(true, true);
   });
 }
 
 var imgElements = document.getElementsByClassName("blurhash");
 
-while (imgElements.length > 0) {
-  const img = imgElements[0];
+for (let i = 0; i < imgElements.length; i++) {
+  const img = imgElements[i];
   const blurhash = img.dataset.blurhash;
   const dswidth = img.dataset.width;
   const dsheight = img.dataset.height;
   if (!blurhash || !dswidth || !dsheight) continue;
 
   const width = 100;
-  const height = Math.round(100 / dswidth * dsheight);
+  const height = Math.round((100 / dswidth) * dsheight);
 
   const pixels = decode(blurhash, width, height);
 
@@ -266,11 +260,9 @@ while (imgElements.length > 0) {
   imageData.data.set(pixels);
   ctx.putImageData(imageData, 0, 0);
 
-  img.src = canvas.toDataURL('image/jpeg', 1.0);
+  img.src = canvas.toDataURL("image/jpeg", 1.0);
 
-  img.addEventListener("mouseover", function(e) {  });
-
-  img.classList.remove("blurhash");
+  img.addEventListener("mouseover", function (e) {});
 }
 
 lazySizes.init();
