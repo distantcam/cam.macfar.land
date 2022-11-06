@@ -10,6 +10,7 @@
     "About": "/about"
   },
   "social": {
+    "mastodon": "https://mastodon.social/@distantcam",
     "twitter": "https://twitter.com/distantcam",
     "github": "https://github.com/distantcam",
     "instagram": "https://instagram.com/distantcam",
