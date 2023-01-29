@@ -1,7 +1,7 @@
 const simpleIcons = require("simple-icons");
 
 function simpleIcon(id) {
-  const data = simpleIcons.Get(id);
+  const data = simpleIcons['si' + id.charAt(0).toUpperCase() + id.slice(1)];
 
   if (!data) {
     return `<p>SimpleIcon ID not found: '${id}'</p>`;
