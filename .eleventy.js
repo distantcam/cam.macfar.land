@@ -15,10 +15,6 @@ const cssShortcode = require("./helpers/cssShortcode");
 module.exports = function (eleventyConfig) {
   if (process.env.ELEVENTY_PRODUCTION) {
     eleventyConfig.addTransform("htmlmin", htmlminTransform);
-  } else {
-    eleventyConfig.setBrowserSyncConfig({
-      callbacks: { ready: browserSyncReady },
-    });
   }
 
   eleventyConfig.setFrontMatterParsingOptions({ excerpt: true });
@@ -63,18 +59,6 @@ module.exports = function (eleventyConfig) {
     },
   };
 };
-
-function browserSyncReady(err, bs) {
-  bs.addMiddleware("*", (req, res) => {
-    const content_404 = fs.readFileSync("_site/404.html");
-    // Provides the 404 content without redirect.
-    res.write(content_404);
-    // Add 404 http status code in request header.
-    // res.writeHead(404, { "Content-Type": "text/html" });
-    res.writeHead(404);
-    res.end();
-  });
-}
 
 function htmlminTransform(content, outputPath) {
   if (outputPath.endsWith(".html")) {
