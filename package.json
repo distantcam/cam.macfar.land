@@ -26,7 +26,7 @@
     "postcss-cli": "^11.0.0",
     "postcss-nested": "^6.2.0",
     "rimraf": "^6.0.1",
-    "simple-icons": "^13.4.0",
+    "simple-icons": "^13.5.0",
     "striptags": "^3.2.0",
     "tailwindcss": "^3.0.19",
     "unsplash-js": "^7.0.19"
