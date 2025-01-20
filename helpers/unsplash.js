@@ -4,7 +4,7 @@ const metadata = require("../src/_data/metadata.json");
 
 function createUnsplashClient() {
   return createApi({
-    accessKey: process.env.UNSPLASH_APP_ID,
+    accessKey: process.env.UNSPLASH_ACCESS,
     secret: process.env.UNSPLASH_SECRET,
     fetch: fetch,
   });
@@ -56,10 +56,10 @@ function unsplash(liquidEngine) {
         data.blur_hash
       }" data-width="${data.width}" data-height="${
         data.height
-      }" data-src="${dataSrc}" data-sizes="${dataSizes.join(
-        ", "
-      )}" data-srcset="${dataSrcSets.join(
-        ", "
+        }" data-src="${dataSrc}" data-sizes="${dataSizes.join(
+          ", "
+        )}" data-srcset="${dataSrcSets.join(
+          ", "
       )}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="${
         data.alt_description
       }" style="background-color:${
@@ -70,7 +70,7 @@ function unsplash(liquidEngine) {
         data.user.name
       }</a></span></figcaption><span class="gallery_caption text-base">📷 ${
         data.user.name
-      }</span></figure>`;
+        }</span></figure>`;
     },
   };
 }

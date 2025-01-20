@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { DateTime } = require("luxon");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
+const feedPlugin = require("@11ty/eleventy-plugin-rss");
 const striptags = require("striptags");
 const fs = require("fs");
 const htmlmin = require("html-minifier");
@@ -21,7 +21,14 @@ module.exports = function (eleventyConfig) {
 
   // Plugins
   eleventyConfig.addPlugin(syntaxHighlight);
-  eleventyConfig.addPlugin(pluginRss);
+  eleventyConfig.addPlugin(feedPlugin, {
+    type: "rss",
+    outputPath: "/feed.rss",
+    collection: {
+      name: "posts",
+      limit: 10
+    }
+  });
 
   // Passthrough
   eleventyConfig.addPassthroughCopy({ "src/static": "." });
