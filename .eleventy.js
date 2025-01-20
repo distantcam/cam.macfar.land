@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { DateTime } = require("luxon");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const feedPlugin = require("@11ty/eleventy-plugin-rss");
+const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
 const striptags = require("striptags");
 const fs = require("fs");
 const htmlmin = require("html-minifier");
@@ -25,8 +25,15 @@ module.exports = function (eleventyConfig) {
     type: "rss",
     outputPath: "/feed.rss",
     collection: {
-      name: "posts",
-      limit: 10
+      name: "posts"
+    },
+    metadata: {
+      title: "Cam MacFarland",
+      subtitle: "Hi, I'm Cam",
+      base: "https://cam.macfar.land/",
+      author: {
+        name: "Cameron MacFarland",
+      }
     }
   });
 
