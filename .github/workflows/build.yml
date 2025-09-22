@@ -1,7 +1,12 @@
 name: Eleventy Build
 
 on:
-  - pull_request_target
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, edited, syncrhonize]
 
 jobs:
   build_deploy:
