@@ -9,7 +9,7 @@ Allowing users to choose either a light or dark theme when viewing your website 
 
 ---
 
-## The CSS {% simpleicon css3 %}
+## The CSS {% simpleicon css %}
 
 First off, we need to add some CSS variables to store settings for the different themes. CSS variables are a way of storing common values in CSS, and when they are changed, they change everywhere they are referenced.
 
