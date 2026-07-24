@@ -1,12 +1,9 @@
-const fetch = require("cross-fetch");
 const { createApi } = require("unsplash-js");
 const metadata = require("../src/_data/metadata.json");
 
 function createUnsplashClient() {
   return createApi({
     accessKey: process.env.UNSPLASH_ACCESS,
-    secret: process.env.UNSPLASH_SECRET,
-    fetch: fetch,
   });
 }
 
@@ -14,13 +11,14 @@ async function getPhotoData(unsplash, id) {
   if (!id) {
     return {};
   }
-  const result = await unsplash.photos.get({ photoId: id });
-  if (result.errors) {
-    return { error: result.errors.join() };
+  const { data, error } = await unsplash.GET("/photos/{assetSlug}", {
+    params: { path: { assetSlug: id } },
+  });
+  if (error) {
+    return { error: JSON.stringify(error) };
   }
-  const json = result.response;
 
-  return json;
+  return data;
 }
 
 function unsplash(liquidEngine) {
@@ -61,11 +59,11 @@ function unsplash(liquidEngine) {
         )}" data-srcset="${dataSrcSets.join(
           ", "
       )}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="${
-        data.alt_description
+        data.description
       }" style="background-color:${
         data.color
       }" /><figcaption class="full_caption"><span>Photo by <a href="${
-        data.user.html
+        data.user.links.html
       }?utm_source=${utmSource}&utm_medium=referral" target="_blank" rel="noopener">${
         data.user.name
       }</a></span></figcaption><span class="gallery_caption text-base">📷 ${
