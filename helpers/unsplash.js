@@ -1,9 +1,11 @@
+const fetch = require("cross-fetch");
 const { createApi } = require("unsplash-js");
 const metadata = require("../src/_data/metadata.json");
 
 function createUnsplashClient() {
   return createApi({
     accessKey: process.env.UNSPLASH_ACCESS,
+    fetch: fetch,
   });
 }
 
@@ -11,14 +13,17 @@ async function getPhotoData(unsplash, id) {
   if (!id) {
     return {};
   }
-  const { data, error } = await unsplash.GET("/photos/{assetSlug}", {
-    params: { path: { assetSlug: id } },
-  });
-  if (error) {
-    return { error: JSON.stringify(error) };
+  try {
+    const { data, error } = await unsplash.GET("/photos/{assetSlug}", {
+      params: { path: { assetSlug: id } },
+    });
+    if (error) {
+      return { error: JSON.stringify(error) };
+    }
+    return data;
+  } catch (e) {
+    return { error: e.message };
   }
-
-  return data;
 }
 
 function unsplash(liquidEngine) {
