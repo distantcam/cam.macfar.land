@@ -1,4 +1,7 @@
 {% set absolutePostUrl %}{{ page.url | url | absoluteUrl(metadata.url) }}{% endset %}
+{% set socialPhoto = post_unsplash if post_unsplash.urls else unsplash.default %}
+{% set socialWidth = metadata.unsplash.social_width %}
+{% set socialImage %}{{ socialPhoto.urls.raw | safe }}{{ metadata.unsplash.social_query | safe }}&w={{ socialWidth }}{% endset %}
 
   <!-- https://github.com/joshbuchea/HEAD -->
   
@@ -27,10 +30,12 @@
   <meta property="og:url" content="{{ absolutePostUrl }}">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ title or metadata.title }}">
-  <meta property="og:image" content="{{ (post_unsplash.urls.raw or unsplash.default.urls.regular) | safe }}">
-  <meta property="og:image:alt" content="{{ post_unsplash.alt_description or unsplash.default.alt_description }}">
-  <meta property="og:image:width" content="{{ post_unsplash.width or unsplash.default.width }}">
-  <meta property="og:image:height" content="{{ post_unsplash.height or unsplash.default.height }}">
+  <meta property="og:image" content="{{ socialImage | safe }}">
+  <meta property="og:image:alt" content="{{ socialPhoto.alt_description }}">
+  {% if socialPhoto.width %}
+  <meta property="og:image:width" content="{{ socialWidth }}">
+  <meta property="og:image:height" content="{{ (socialWidth * socialPhoto.height / socialPhoto.width) | round }}">
+  {% endif %}
   <meta property="og:description" content="{{ excerpt or (page.excerpt | striptags) or metadata.description }}">
   <meta property="og:site_name" content="{{ metadata.title }}">
   <meta property="og:locale" content="en_AU">
@@ -42,7 +47,7 @@
   <meta name="twitter:url" content="{{ absolutePostUrl }}">
   <meta name="twitter:title" content="{{ title or metadata.title }}">
   <meta name="twitter:description" content="{{ excerpt or (page.excerpt | striptags) or metadata.description }}">
-  <meta name="twitter:image" content="{{ (post_unsplash.urls.raw or unsplash.default.urls.raw) | safe }}{{ metadata.unsplash.common_query | safe }}&w=4096">
-  <meta name="twitter:image:alt" content="{{ post_unsplash.alt_description or unsplash.default.alt_description }}">
+  <meta name="twitter:image" content="{{ socialImage | safe }}">
+  <meta name="twitter:image:alt" content="{{ socialPhoto.alt_description }}">
 
   <title>{{ title or metadata.title }}</title>

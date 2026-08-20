@@ -15,8 +15,14 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
         with:
-          node-version: latest
-      - run: npm install
+          node-version: 22
+          cache: npm
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: unsplash-${{ hashFiles('src/_data/metadata.json', 'src/posts/*.md', 'src/pages/*.md') }}
+          restore-keys: unsplash-
+      - run: npm ci
       - run: npm run build
         env:
           UNSPLASH_ACCESS: ${{ secrets.UNSPLASH_ACCESS }}

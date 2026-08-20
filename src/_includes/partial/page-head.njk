@@ -1,14 +1,14 @@
 <div class="relative w-full h-64 mt-5 md:h-128">
   {% if unsplash_id %}
   {% if post_unsplash.error %}
-    <p class="flex items-center justify-center w-full h-full text-4xl">{{ unsplash.error }}</p>
+    <p class="flex items-center justify-center w-full h-full text-4xl">{{ post_unsplash.error }}</p>
   {% else %}
     <img class="absolute inset-0 block object-cover w-full h-full blurhash lazyload"
       data-blurhash="{{ post_unsplash.blur_hash }}"
       data-width="{{ post_unsplash.width }}"
       data-height="{{ post_unsplash.height }}"
       data-src="{{ post_unsplash.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w=1024"
-      data-sizes="{% for size in metadata.unsplash.sizes %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+      data-sizes="auto"
       data-srcset="{% set comma = joiner(", ") %}{% for size in metadata.unsplash.sizes %}{{ comma() }}{{ post_unsplash.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w={{ size }} {{ size }}w{% endfor %}"
       src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
       alt="{{ post_unsplash.alt_description }}"
@@ -16,23 +16,23 @@
       />
   {% endif %}
   {% else %}
-    <img class="absolute inset-0 block object-cover w-full h-full blurhash lazyload dark:hidden"
+    <img class="absolute inset-0 block object-cover w-full h-full blurhash lazyload dark:invisible"
       data-blurhash="{{ unsplash.default.blur_hash }}"
       data-width="{{ unsplash.default.width }}"
       data-height="{{ unsplash.default.height }}"
       data-src="{{ unsplash.default.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w=1024"
-      data-sizes="{% for size in metadata.unsplash.sizes %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+      data-sizes="auto"
       data-srcset="{% set comma = joiner(", ") %}{% for size in metadata.unsplash.sizes %}{{ comma() }}{{ unsplash.default.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w={{ size }} {{ size }}w{% endfor %}"
       src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
       alt="{{ unsplash.default.alt_description }}"
       style="background-color:{{ unsplash.default.color }}"
       />
-    <img class="absolute inset-0 hidden block object-cover w-full h-full blurhash lazyload dark:visible"
+    <img class="absolute inset-0 invisible block object-cover w-full h-full blurhash lazyload dark:visible"
       data-blurhash="{{ unsplash.default_dark.blur_hash }}"
       data-width="{{ unsplash.default_dark.width }}"
       data-height="{{ unsplash.default_dark.height }}"
       data-src="{{ unsplash.default_dark.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w=1024"
-      data-sizes="{% for size in metadata.unsplash.sizes %}(max-width: {{ size }}px) {{ size }}px, {% endfor %}600px"
+      data-sizes="auto"
       data-srcset="{% set comma = joiner(", ") %}{% for size in metadata.unsplash.sizes %}{{ comma() }}{{ unsplash.default_dark.urls.raw | safe}}{{ metadata.unsplash.common_query | safe }}&w={{ size }} {{ size }}w{% endfor %}"
       src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
       alt="{{ unsplash.default_dark.alt_description }}"

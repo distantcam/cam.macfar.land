@@ -10,7 +10,7 @@ function codePen(liquidEngine) {
       var user = args[0].trim();
       var token = args[1].trim();
 
-      return Promise.resolve(`<p class="codepen" data-user="${user}" data-slug-hash="${token}" data-default-tab="}&lt;&#x2F;p&gt;" data-theme-id="dark" data-height="512" style="height: 512px"><span>See the <a href="https://codepen.io/${user}/pen/${token}" target="_blank" rel="noopener">CodePen</a></span></p>`);
+      return Promise.resolve(`<p class="codepen" data-user="${user}" data-slug-hash="${token}" data-default-tab="result" data-theme-id="dark" data-height="512" style="height: 512px"><span>See the <a href="https://codepen.io/${user}/pen/${token}" target="_blank" rel="noopener">CodePen</a></span></p>`);
     }
   };
 }

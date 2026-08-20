@@ -1,7 +1,11 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  content: ["./src/_includes/**/*.njk", "./src/index.njk"],
+  content: [
+    "./src/**/*.njk",
+    "./src/**/*.md",
+    "./helpers/**/*.js",
+  ],
   darkMode: "class",
   theme: {
     fontFamily: {

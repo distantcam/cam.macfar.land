@@ -1,6 +1,7 @@
 {
   "title": "Cam MacFarland",
   "subtitle": "Hi, I'm Cam",
+  "language": "en",
   "url": "https://cam.macfar.land/",
   "feedUrl": "/feed.rss",
   "description": "I'm a software engineer, occasional writer, open source contributer and all round nerd from Perth, Australia",
@@ -21,6 +22,8 @@
     "default_dark_id": "0gkw_9fy0eQ",
     "utm_source": "cam.macfar.land",
     "common_query": "&fm=webp&q=80&crop=entropy&fit=max",
-    "sizes": [ "30", "100", "300", "600", "1000" ]
+    "social_query": "&fm=jpg&q=80&fit=max",
+    "social_width": 1200,
+    "sizes": [ "30", "100", "300", "600", "1000", "1500", "2000" ]
   }
 }

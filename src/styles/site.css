@@ -44,33 +44,30 @@ a.inverted:hover {
 }
 
 @layer utilities {
-  @layer responsive {
-    .list-item {
-      display: list-item;
-    }
+  .list-item {
+    display: list-item;
   }
 
-  @layer dark {
-    .header-shadow-dark {
-      text-shadow: 2px 2px 10px theme("colors.gray.900"),
-        -2px 2px 10px theme("colors.gray.900"),
-        2px -2px 10px theme("colors.gray.900"),
-        -2px -2px 10px theme("colors.gray.900"),
-        4px 4px 10px theme("colors.gray.900"),
-        -4px 4px 10px theme("colors.gray.900"),
-        4px -4px 10px theme("colors.gray.900"),
-        -4px -4px 10px theme("colors.gray.900");
-    }
-    .header-shadow-light {
-      text-shadow: 2px 2px 10px theme("colors.gray.100"),
-        -2px 2px 10px theme("colors.gray.100"),
-        2px -2px 10px theme("colors.gray.100"),
-        -2px -2px 10px theme("colors.gray.100"),
-        4px 4px 10px theme("colors.gray.100"),
-        -4px 4px 10px theme("colors.gray.100"),
-        4px -4px 10px theme("colors.gray.100"),
-        -4px -4px 10px theme("colors.gray.100");
-    }
+  .header-shadow-dark {
+    text-shadow: 2px 2px 10px theme("colors.gray.900"),
+      -2px 2px 10px theme("colors.gray.900"),
+      2px -2px 10px theme("colors.gray.900"),
+      -2px -2px 10px theme("colors.gray.900"),
+      4px 4px 10px theme("colors.gray.900"),
+      -4px 4px 10px theme("colors.gray.900"),
+      4px -4px 10px theme("colors.gray.900"),
+      -4px -4px 10px theme("colors.gray.900");
+  }
+
+  .header-shadow-light {
+    text-shadow: 2px 2px 10px theme("colors.gray.100"),
+      -2px 2px 10px theme("colors.gray.100"),
+      2px -2px 10px theme("colors.gray.100"),
+      -2px -2px 10px theme("colors.gray.100"),
+      4px 4px 10px theme("colors.gray.100"),
+      -4px 4px 10px theme("colors.gray.100"),
+      4px -4px 10px theme("colors.gray.100"),
+      -4px -4px 10px theme("colors.gray.100");
   }
 }
 

@@ -11,6 +11,7 @@ const postLink = require("./helpers/postLink");
 const codePen = require("./helpers/codePen");
 const { unsplash } = require("./helpers/unsplash");
 const cssShortcode = require("./helpers/cssShortcode");
+const metadata = require("./src/_data/metadata.json");
 
 module.exports = function (eleventyConfig) {
   if (process.env.ELEVENTY_PRODUCTION) {
@@ -28,11 +29,12 @@ module.exports = function (eleventyConfig) {
       name: "posts"
     },
     metadata: {
-      title: "Cam MacFarland",
-      subtitle: "Hi, I'm Cam",
-      base: "https://cam.macfar.land/",
+      title: metadata.title,
+      subtitle: metadata.subtitle,
+      language: metadata.language,
+      base: metadata.url,
       author: {
-        name: "Cameron MacFarland",
+        name: metadata.author,
       }
     }
   });

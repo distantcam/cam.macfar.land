@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
 
+  <script>
+    try {
+      if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      }
+    } catch (e) {}
+  </script>
+
 {% include "partial/head.njk" %}
 
   {% css "https://fonts.googleapis.com/css?family=Open+Sans:300,700|Fira+Code:300,400|Material+Icons:400&display=swap" %}
