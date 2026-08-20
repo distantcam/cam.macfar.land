@@ -1,6 +1,6 @@
 <div class="relative w-full h-64 mt-5 md:h-128">
   {% if unsplash_id %}
-  {% if post_unsplash.error %}
+  {% if post_unsplash.error and (not post_unsplash.urls or not post_unsplash.urls.raw) %}
     <p class="flex items-center justify-center w-full h-full text-4xl">{{ post_unsplash.error }}</p>
   {% else %}
     <img class="absolute inset-0 block object-cover w-full h-full blurhash lazyload"

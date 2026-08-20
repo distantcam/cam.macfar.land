@@ -3,7 +3,7 @@
   <div class="flex flex-col w-full mx-5 mb-5 overflow-hidden bg-gray-100 rounded shadow-lg md:mb-10 dark:bg-gray-900 post-card__container">
     <a class="relative w-full h-48 post-card__image" href="{{ post.url | url }}">
       {% if post.data.unsplash_id %}
-      {% if post.data.post_unsplash.error %}
+      {% if post.data.post_unsplash.error and (not post.data.post_unsplash.urls or not post.data.post_unsplash.urls.raw) %}
         <p class="flex items-center justify-center w-full h-full text-4xl">{{ post.data.post_unsplash.error }}</p>
       {% else %}
         <img class="absolute inset-0 block object-cover w-full h-full blurhash lazyload"

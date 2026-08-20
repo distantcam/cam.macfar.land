@@ -10,7 +10,8 @@ function createUnsplashClient() {
 }
 
 function fallbackPhotoData(id, error) {
-  const fallbackUrl = `https://source.unsplash.com/${encodeURIComponent(id)}/?`;
+  const fallbackAssetPath = "assets/blazor.png";
+  const fallbackUrl = `${metadata.url}${fallbackAssetPath}`;
   return {
     id,
     error,
@@ -21,7 +22,7 @@ function fallbackPhotoData(id, error) {
     alt_description: "Unsplash image",
     description: "Unsplash image",
     urls: {
-      raw: fallbackUrl,
+      raw: `${fallbackUrl}?`,
       regular: fallbackUrl,
       full: fallbackUrl,
     },
