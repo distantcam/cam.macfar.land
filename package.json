@@ -19,7 +19,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "autoprefixer": "^10.5.4",
     "cross-env": "^10.1.0",
-    "cssnano": "^8.0.7",
+    "cssnano": "^8.0.8",
     "dotenv": "^17.4.2",
     "html-minifier": "^4.0.0",
     "luxon": "^3.7.2",
