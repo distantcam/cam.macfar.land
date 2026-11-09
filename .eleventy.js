@@ -4,7 +4,6 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
 const striptags = require("striptags");
 const fs = require("fs");
-const htmlmin = require("html-minifier");
 
 const { simpleIcon, simpleIconLQ } = require("./helpers/simpleIcon");
 const postLink = require("./helpers/postLink");
@@ -76,14 +75,14 @@ module.exports = function (eleventyConfig) {
   };
 };
 
-function htmlminTransform(content, outputPath) {
+async function htmlminTransform(content, outputPath) {
   if (outputPath.endsWith(".html")) {
-    let minified = htmlmin.minify(content, {
+    const { minify } = await import("html-minifier");
+    return await minify(content, {
       useShortDoctype: true,
       removeComments: true,
       collapseWhitespace: true,
     });
-    return minified;
   }
   return content;
 }
